@@ -9,12 +9,16 @@ public class GalgameCharacterDefineEditor : Editor {
     SerializedProperty m_CharacterName;
     SerializedProperty m_Emojis;
     static bool isElementInEditMode = false;
-
+    SerializedProperty _state;
     GameObject m_baseImg;
     GameObject m_faceImg;
+    Vector3 _localPostion;
+    Vector3 _localRotation;
+    Vector3 _localScale;
 
     private void OnDisable()
     {
+        _state = null;
         SceneView.onSceneGUIDelegate -= OnSceneGUI;
     }
 
@@ -58,7 +62,29 @@ public class GalgameCharacterDefineEditor : Editor {
 
     private void OnSceneGUI(SceneView sv)
     {
-            Debug.Log(1);
+        if (isElementInEditMode && m_faceImg != null)
+        {
+            serializedObject.Update();
+            //Debug.Log(m_faceImg.transform.localPosition);
+            SerializedProperty state = _state;
+            //Debug.Log(state);
+            saveStatus(state);
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+
+    void saveStatus(SerializedProperty state)
+    {
+        if (m_faceImg == null) return;
+        state.FindPropertyRelative("Position").vector3Value = m_faceImg.transform.localPosition;
+        state.FindPropertyRelative("Rotation").vector3Value = m_faceImg.transform.eulerAngles;
+        state.FindPropertyRelative("Scale").vector3Value = m_faceImg.transform.localScale;
+    }
+    void saveStatus(SerializedProperty state, Vector3 pos,Vector3 ro,Vector3 sca)
+    {
+        state.FindPropertyRelative("Position").vector3Value = pos;
+        state.FindPropertyRelative("Rotation").vector3Value = ro;
+        state.FindPropertyRelative("Scale").vector3Value = sca;
     }
 
     public override void OnInspectorGUI()
@@ -79,6 +105,11 @@ public class GalgameCharacterDefineEditor : Editor {
             if (!isElementInEditMode && !isStateEdit && GUILayout.Button("直观调整"))
             {
                 //toggleLock();
+                _state = state;
+                _localPostion = state.FindPropertyRelative("Position").vector3Value;
+                _localRotation = state.FindPropertyRelative("Rotation").vector3Value;
+                _localScale= state.FindPropertyRelative("Scale").vector3Value;
+
                 state.FindPropertyRelative("isEditMode").boolValue = true;
                isElementInEditMode = true;
                 string emoji = state.FindPropertyRelative("EmojiName").stringValue;
@@ -87,11 +118,13 @@ public class GalgameCharacterDefineEditor : Editor {
                 setFgimgValue(state);
             }
      
-            if (isElementInEditMode && isStateEdit&& GUILayout.Button("Save"))
+            if (isElementInEditMode && isStateEdit&& GUILayout.Button("Reset"))
             {
-                state.FindPropertyRelative("Position").vector3Value = m_faceImg.transform.localPosition;
-                state.FindPropertyRelative("Rotation").vector3Value = m_faceImg.transform.eulerAngles;
-                state.FindPropertyRelative("Scale").vector3Value = m_faceImg.transform.localScale;
+                //saveStatus(state);
+                //Debug.Log(test);
+                saveStatus(state, _localPostion, _localRotation, _localScale);
+                //state = _state;
+                // Debug.Log(state.FindPropertyRelative("Position").vector3Value);
             }
 
             if (isElementInEditMode && isStateEdit && m_faceImg != null)
@@ -103,6 +136,7 @@ public class GalgameCharacterDefineEditor : Editor {
 
             if (isElementInEditMode && isStateEdit && GUILayout.Button("Exit"))
             {
+                _state = null;
                 state.FindPropertyRelative("isEditMode").boolValue = false;
                 isElementInEditMode = false;
                 GameObject.DestroyImmediate(m_baseImg);

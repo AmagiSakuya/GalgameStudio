@@ -44,6 +44,10 @@ public class GalgameKeyframeDrawer : PropertyDrawer
             position.y += 20;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("Scale"));
             position.y += 20;
+            if (GUILayout.Button("Test"))
+            {
+                Debug.Log(1);
+            }
         }
     }
 

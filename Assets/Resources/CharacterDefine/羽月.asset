@@ -16,7 +16,7 @@ MonoBehaviour:
   - EmojiName: "\u8868\u60C51"
     BaseImg: {fileID: 21300000, guid: b16376fef32cf734a8dd6ac0f4f76f32, type: 3}
     FaceImg: {fileID: 21300000, guid: 86b90e20c3db8f44a9b5b80b75e80937, type: 3}
-    Position: {x: 0.22, y: 12.87, z: -1}
+    Position: {x: 0.28, y: 12.79, z: -1}
     Rotation: {x: -0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     isEditMode: 0

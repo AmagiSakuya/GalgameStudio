@@ -106,4 +106,20 @@ public class GameManger : MonoBehaviour {
     public void ClearVoiceCallback() {
         StopAllCoroutines();
     }
+
+    public void Perform(List<GalgameKeyframe> keyframes)
+    {
+        int i = 0;
+        Perform(keyframes[i], () =>
+        {
+            if (i == keyframes.Count)
+
+                i++;
+        });
+    }
+
+    void Perform(GalgameKeyframe kf , Action callback)
+    {
+
+    }
 }

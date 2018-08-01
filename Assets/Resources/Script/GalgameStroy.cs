@@ -52,6 +52,7 @@ public class GalgameStroy : MonoBehaviour {
                 StartAction();
             }
         });
+       // GameManger.Perform(actions[ActionIndex].Keyframe);
         ActionIndex++;
     }
 
