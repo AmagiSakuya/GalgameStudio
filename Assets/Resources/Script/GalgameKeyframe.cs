@@ -9,5 +9,5 @@ public class GalgameKeyframe {
     public Vector3 Position;
     public Vector3 Rotation;
     public Vector3 Scale;
-    public float Time;
+    public float TimeAxis;
 }

@@ -20,6 +20,8 @@ public class GameManger : MonoBehaviour {
     private int currentPos;
     public bool isActive;
 
+    /*****演出*****/
+
     void Start () {
     
     }
@@ -110,15 +112,25 @@ public class GameManger : MonoBehaviour {
     public void Perform(List<GalgameKeyframe> keyframes)
     {
         int i = 0;
-        Perform(keyframes[i], () =>
-        {
-            if (i == keyframes.Count)
+    }
+   
+    void Perform(GalgameKeyframe keyframe)
+    {
 
-                i++;
-        });
     }
 
-    void Perform(GalgameKeyframe kf , Action callback)
+    void Stop(float stopTime,Action callback)
+    {
+        StartCoroutine(StopCoroutine(stopTime, callback));
+    }
+
+    IEnumerator StopCoroutine(float stopTime, Action callback)
+    {
+        yield return new WaitForSeconds(stopTime);
+        callback();
+    }
+
+    public void EndPerform()
     {
 
     }

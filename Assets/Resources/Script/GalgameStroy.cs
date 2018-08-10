@@ -38,11 +38,13 @@ public class GalgameStroy : MonoBehaviour {
         if (GameManger.isActive)
         {
             GameManger.FinishTyperEffect();
+            GameManger.EndPerform();
             return;
         }
         else
         {
             GameManger.ChangeUIContent(actions[ActionIndex].Serifu);
+            GameManger.Perform(actions[ActionIndex].Keyframe);
         }
 
         GameManger.ChangeUIName(actions[ActionIndex].Character.ToString());

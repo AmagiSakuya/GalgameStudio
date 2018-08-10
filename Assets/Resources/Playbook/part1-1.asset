@@ -24,8 +24,8 @@ MonoBehaviour:
       EmojiSelect: 0
       Position: {x: 0, y: 0, z: 0}
       Rotation: {x: 0, y: 0, z: 0}
-      Scale: {x: 0, y: 0, z: 0}
-      Time: 0
+      Scale: {x: 1, y: 1, z: 1}
+      TimeAxis: 0
   - Character: 0
     Serifu: "\u5B66\u751F\u3058\u3083\u306A\u3044\u3093\u3067\u3059\u304B\uFF1F"
     Voice: {fileID: 0}

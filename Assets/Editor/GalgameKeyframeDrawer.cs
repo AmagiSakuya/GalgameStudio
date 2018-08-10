@@ -6,6 +6,14 @@ using UnityEngine;
 [CustomPropertyDrawer(typeof(GalgameKeyframe))]
 public class GalgameKeyframeDrawer : PropertyDrawer
 {
+    static bool isPerformInEditMode = false;
+    SerializedProperty _state;
+    GameObject m_baseImg;
+    GameObject m_faceImg;
+    Vector3 _localPostion;
+    Vector3 _localRotation;
+    Vector3 _localScale;
+
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         position.height = 16f;
@@ -44,10 +52,15 @@ public class GalgameKeyframeDrawer : PropertyDrawer
             position.y += 20;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("Scale"));
             position.y += 20;
-            if (GUILayout.Button("Test"))
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeAxis"));
+            position.y += 20;
+            Color oldGUIColor = GUI.backgroundColor;
+            GUI.backgroundColor = Color.green;
+            if (GUILayout.Button("直观调整"))
             {
-                Debug.Log(1);
+                Debug.Log("功能建设中");
             }
+            GUI.backgroundColor = oldGUIColor;
         }
     }
 
