@@ -6,7 +6,6 @@ using UnityEngine;
 [CustomPropertyDrawer(typeof(GalgameKeyframe))]
 public class GalgameKeyframeDrawer : PropertyDrawer
 {
-    static bool isPerformInEditMode = false;
     SerializedProperty _state;
     GameObject m_baseImg;
     GameObject m_faceImg;
@@ -16,9 +15,8 @@ public class GalgameKeyframeDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        position.height = 16f;
-       // position.x = 36f;
         EditorGUI.BeginProperty(position, label, property);
+        position.height = 16f;
         property.isExpanded = EditorGUI.Foldout(position, property.isExpanded, label, true);
         if (property.isExpanded)
         {
@@ -29,7 +27,8 @@ public class GalgameKeyframeDrawer : PropertyDrawer
 
     private static void DrawProperty(Rect position, SerializedProperty property)
     {
-        EditorGUI.indentLevel += 1;
+        
+        //EditorGUI.indentLevel += 1;
         position.y += 20;
         EditorGUI.PropertyField(position, property.FindPropertyRelative("Character"));
         SerializedProperty m_Chara = property.FindPropertyRelative("Character");
@@ -43,8 +42,15 @@ public class GalgameKeyframeDrawer : PropertyDrawer
                 showTxt.Add(m_obj.Emojis[i].EmojiName);
             }
             int index = property.FindPropertyRelative("EmojiSelect").intValue;
-            index = EditorGUI.Popup(position, index, showTxt.ToArray());
+            index = EditorGUI.Popup(new Rect(position.x, position.y, 200, 16), index, showTxt.ToArray());
             property.FindPropertyRelative("EmojiSelect").intValue = index;
+            Color oldGUIColor = GUI.backgroundColor;
+            GUI.backgroundColor = Color.green;
+            if (GUI.Button(new Rect(position.x+210, position.y, position.xMax - 250, 16), "直观调整"))
+            {
+                Debug.Log("功能建设中");
+            }
+            GUI.backgroundColor = oldGUIColor;
             position.y += 20;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("Position"));
             position.y += 20;
@@ -54,13 +60,6 @@ public class GalgameKeyframeDrawer : PropertyDrawer
             position.y += 20;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeAxis"));
             position.y += 20;
-            Color oldGUIColor = GUI.backgroundColor;
-            GUI.backgroundColor = Color.green;
-            if (GUILayout.Button("直观调整"))
-            {
-                Debug.Log("功能建设中");
-            }
-            GUI.backgroundColor = oldGUIColor;
         }
     }
 
@@ -72,7 +71,11 @@ public class GalgameKeyframeDrawer : PropertyDrawer
 
     public static float GetPropertyHeight(SerializedProperty property)
     {
-        var h = 50;
+        var h = 20;
+        if (property.isExpanded)
+        {
+            h += 120;
+        }
         return h;
     }
 }
