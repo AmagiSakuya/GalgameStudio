@@ -22,9 +22,9 @@ MonoBehaviour:
     Keyframe:
     - Character: {fileID: 11400000, guid: 0aa4a3ee05e1fa64baa33ef5828f124c, type: 2}
       EmojiSelect: 0
-      Position: {x: 0, y: 0, z: 0}
+      Position: {x: -2.73, y: -3.09, z: 91}
       Rotation: {x: 0, y: 0, z: 0}
-      Scale: {x: 0, y: 0, z: 0}
+      Scale: {x: 0.38130987, y: 0.38130987, z: 0.38130987}
       TimeAxis: 0
   - Character: 0
     Serifu: "\u5B66\u751F\u3058\u3083\u306A\u3044\u3093\u3067\u3059\u304B\uFF1F"

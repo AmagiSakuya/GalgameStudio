@@ -23,42 +23,9 @@ public class GalgameCharacterDefineEditor : Editor {
 
     void OnEnable()
     {
-        //if(editIndex!=null)
         m_CharacterName = serializedObject.FindProperty("CharacterName");
         m_Emojis = serializedObject.FindProperty("Emojis");
         SceneView.onSceneGUIDelegate += OnSceneGUI;
-    }
-
-    GameObject createAdjObj(string name, Sprite sprite, Transform parent = null)
-    {
-        GameObject _obj = new GameObject();
-        if (parent != null)
-        {
-            _obj.transform.SetParent(parent);
-        }
-        _obj.name = name;
-        _obj.AddComponent<SpriteRenderer>().sprite = sprite;
-        _obj.transform.position = Vector3.zero;
-        _obj.transform.eulerAngles = Vector3.zero;
-        return _obj;
-    }
-
-    void setFgimgValue(SerializedProperty state)
-    {
-        if (state == null) return;
-        m_faceImg.transform.localPosition = state.FindPropertyRelative("Position").vector3Value;
-        m_faceImg.transform.eulerAngles = state.FindPropertyRelative("Rotation").vector3Value;
-        Vector3 scale = state.FindPropertyRelative("Scale").vector3Value;
-        if (scale == Vector3.zero) scale = new Vector3(1, 1, 1);
-        m_faceImg.transform.localScale = scale;
-    }
-
-    void toggleLock()
-    {
-        var type = typeof(EditorWindow).Assembly.GetType("UnityEditor.InspectorWindow");
-        var window = EditorWindow.GetWindow(type);
-        MethodInfo info = type.GetMethod("FlipLocked", BindingFlags.NonPublic | BindingFlags.Instance);
-        info.Invoke(window, null);
     }
 
     private void OnSceneGUI(SceneView sv)
@@ -68,24 +35,9 @@ public class GalgameCharacterDefineEditor : Editor {
             serializedObject.Update();
             if (editIndex == -1) return;
             SerializedProperty state = m_Emojis.GetArrayElementAtIndex(editIndex);
-            saveStatus(state);
+            GalgameUtil.Instance.SaveStatus(state, m_faceImg);
             serializedObject.ApplyModifiedProperties();
         }
-    }
-
-    void saveStatus(SerializedProperty state)
-    {
-        if (m_faceImg == null || state ==null) return;
-        state.FindPropertyRelative("Position").vector3Value = m_faceImg.transform.localPosition;
-        state.FindPropertyRelative("Rotation").vector3Value = m_faceImg.transform.eulerAngles;
-        state.FindPropertyRelative("Scale").vector3Value = m_faceImg.transform.localScale;
-    }
-
-    void saveStatus(SerializedProperty state, Vector3 pos,Vector3 ro,Vector3 sca)
-    {
-        state.FindPropertyRelative("Position").vector3Value = pos;
-        state.FindPropertyRelative("Rotation").vector3Value = ro;
-        state.FindPropertyRelative("Scale").vector3Value = sca;
     }
 
     public override void OnInspectorGUI()
@@ -112,19 +64,19 @@ public class GalgameCharacterDefineEditor : Editor {
                 state.FindPropertyRelative("isEditMode").boolValue = true;
                isElementInEditMode = true;
                 string emoji = state.FindPropertyRelative("EmojiName").stringValue;
-                m_baseImg = createAdjObj(emoji + "_BaseImg", (Sprite)state.FindPropertyRelative("BaseImg").objectReferenceValue);
-                m_faceImg = createAdjObj(emoji + "_FaceImg", (Sprite)state.FindPropertyRelative("FaceImg").objectReferenceValue, m_baseImg.transform);
-                setFgimgValue(state);
+                m_baseImg = GalgameUtil.Instance.CreateGalgameEditorObject(emoji + "_BaseImg", (Sprite)state.FindPropertyRelative("BaseImg").objectReferenceValue);
+                m_faceImg = GalgameUtil.Instance.CreateGalgameEditorObject(emoji + "_FaceImg", (Sprite)state.FindPropertyRelative("FaceImg").objectReferenceValue, m_baseImg.transform);
+                GalgameUtil.Instance.SetLocalTransform(m_faceImg, state);
             }
      
             if (isElementInEditMode && isStateEdit&& GUILayout.Button("Reset"))
             {
-                saveStatus(state, _localPostion, _localRotation, _localScale);
+                GalgameUtil.Instance.SaveStatus(state, _localPostion, _localRotation, _localScale);
             }
 
             if (isElementInEditMode && isStateEdit && m_faceImg != null)
             {
-                setFgimgValue(state);
+                GalgameUtil.Instance.SetLocalTransform(m_faceImg,state);
             }
 
             GUI.backgroundColor = oldGUIColor;
@@ -136,16 +88,6 @@ public class GalgameCharacterDefineEditor : Editor {
                 isElementInEditMode = false;
                 GameObject.DestroyImmediate(m_baseImg);
             }
-
-            //if (!isElementInEditMode && !isStateEdit && GUILayout.Button("上移"))
-            //{
-            //    m_Emojis.MoveArrayElement(i, i - 1);
-            //}
-
-            //if (!isElementInEditMode && !isStateEdit && GUILayout.Button("下移"))
-            //{
-            //    m_Emojis.MoveArrayElement(i, i + 1);
-            //}
 
             if (!isElementInEditMode && !isStateEdit && GUILayout.Button("删除"))
             {
@@ -162,6 +104,5 @@ public class GalgameCharacterDefineEditor : Editor {
             m_Emojis.InsertArrayElementAtIndex(index);
         }
         serializedObject.ApplyModifiedProperties();
-       // base.OnInspectorGUI();
     }
 }

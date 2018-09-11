@@ -6,12 +6,13 @@ using UnityEngine;
 [CustomPropertyDrawer(typeof(GalgameKeyframe))]
 public class GalgameKeyframeDrawer : PropertyDrawer
 {
-    SerializedProperty _state;
-    GameObject m_baseImg;
-    GameObject m_faceImg;
-    Vector3 _localPostion;
-    Vector3 _localRotation;
-    Vector3 _localScale;
+    public static GameObject m_baseImg;
+    static GameObject m_faceImg;
+    static Vector3 _localPostion;
+    static Vector3 _localRotation;
+    static Vector3 _localScale;
+    public static bool isEditMode = false;
+    public static string path;
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -27,8 +28,7 @@ public class GalgameKeyframeDrawer : PropertyDrawer
 
     private static void DrawProperty(Rect position, SerializedProperty property)
     {
-        
-        //EditorGUI.indentLevel += 1;
+        SerializedProperty state = property;
         position.y += 20;
         EditorGUI.PropertyField(position, property.FindPropertyRelative("Character"));
         SerializedProperty m_Chara = property.FindPropertyRelative("Character");
@@ -46,11 +46,32 @@ public class GalgameKeyframeDrawer : PropertyDrawer
             property.FindPropertyRelative("EmojiSelect").intValue = index;
             Color oldGUIColor = GUI.backgroundColor;
             GUI.backgroundColor = Color.green;
-            if (GUI.Button(new Rect(position.x+210, position.y, position.xMax - 250, 16), "直观调整"))
+            if (!isEditMode )
             {
-                Debug.Log("功能建设中");
+                if (GUI.Button(new Rect(position.x + 210, position.y, position.xMax - 250, 16), "直观调整"))
+                {
+                    isEditMode = true;
+                    path = property.propertyPath;
+                    GalgameCharacterDefine charaDefine = (GalgameCharacterDefine)property.FindPropertyRelative("Character").objectReferenceValue;
+                    if (charaDefine == null) return;
+                    GalgameCharacterEmoji emoji = charaDefine.Emojis[index];
+                    m_baseImg = GalgameUtil.Instance.CreateGalgameEditorObject("角色", emoji.BaseImg);
+                    m_faceImg = GalgameUtil.Instance.CreateGalgameEditorObject("表情", emoji.FaceImg, m_baseImg.transform);
+                    GalgameUtil.Instance.SetLocalTransform(m_faceImg, emoji.Position, emoji.Rotation, emoji.Scale);
+                }
+                GUI.backgroundColor = oldGUIColor;
             }
-            GUI.backgroundColor = oldGUIColor;
+            else
+            {
+                GUI.backgroundColor = oldGUIColor;
+                if (GUI.Button(new Rect(position.x + 210, position.y, position.xMax - 250, 16), "Exit"))
+                {
+                    GameObject.DestroyImmediate(m_baseImg);
+                    isEditMode = false;
+                    state = null;
+                }
+                GalgameUtil.Instance.SetLocalTransform(m_baseImg, state);
+            }
             position.y += 20;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("Position"));
             position.y += 20;
@@ -62,7 +83,6 @@ public class GalgameKeyframeDrawer : PropertyDrawer
             position.y += 20;
         }
     }
-
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {

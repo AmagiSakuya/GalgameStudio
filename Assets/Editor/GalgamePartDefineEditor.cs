@@ -4,7 +4,8 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(GalgamePartDefine))]
-public class GalgamePartDefineEditor : Editor {
+public class GalgamePartDefineEditor : Editor
+{
     SerializedProperty m_Actions;
     SerializedProperty m_StartBgm;
     SerializedProperty m_BaseBg;
@@ -14,14 +15,29 @@ public class GalgamePartDefineEditor : Editor {
         m_Actions = serializedObject.FindProperty("Actions");
         m_StartBgm = serializedObject.FindProperty("StartBgm");
         m_BaseBg = serializedObject.FindProperty("BaseBg");
+        SceneView.onSceneGUIDelegate += OnSceneGUI;
     }
+
+    private void OnDisable()
+    {
+        SceneView.onSceneGUIDelegate -= OnSceneGUI;
+    }
+
+    private void OnSceneGUI(SceneView sv)
+    {
+        if (GalgameKeyframeDrawer.isEditMode)
+        {
+            serializedObject.Update();
+            GalgameUtil.Instance.SaveStatus(serializedObject.FindProperty(GalgameKeyframeDrawer.path), GalgameKeyframeDrawer.m_baseImg);
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+
     public override void OnInspectorGUI()
     {
-        // Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
         serializedObject.Update();
-
-       EditorGUILayout.PropertyField(m_StartBgm);
-       EditorGUILayout.PropertyField(m_BaseBg);
+        EditorGUILayout.PropertyField(m_StartBgm);
+        EditorGUILayout.PropertyField(m_BaseBg);
 
         for (int i = 0; i < m_Actions.arraySize; i++)
         {
@@ -54,6 +70,5 @@ public class GalgamePartDefineEditor : Editor {
             m_Actions.InsertArrayElementAtIndex(index);
         }
         serializedObject.ApplyModifiedProperties();
-       // base.OnInspectorGUI();
     }
 }
