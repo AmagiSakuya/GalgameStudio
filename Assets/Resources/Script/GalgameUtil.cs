@@ -17,19 +17,44 @@ public class GalgameUtil
         return obj;
     }
 
+    public GameObject CreateGalgameChararcter(GalgameKeyframe keyframe, Transform parent = null)
+    {
+        GalgameCharacterEmoji emoji = keyframe.Character.Emojis[keyframe.EmojiSelect];
+        GameObject baseImg = CreateGalgameEditorObject(keyframe.Character.CharacterName, emoji.BaseImg);
+        SetLocalTransform(baseImg, keyframe);
+        GameObject faceImg = CreateGalgameEditorObject(keyframe.Character.CharacterName + "_表情", emoji.FaceImg, baseImg.transform);
+        SetLocalTransform(faceImg, emoji);
+        return baseImg;
+    }
+
+    public void ChangeCharacterEmoji(GameObject target,GalgameCharacterEmoji emoji)
+    {
+        target.GetComponent<SpriteRenderer>().sprite = emoji.BaseImg;
+        GameObject face = target.transform.GetChild(0).gameObject;
+        face.GetComponent<SpriteRenderer>().sprite = emoji.FaceImg;
+        SetLocalTransform(face, emoji);
+    }
+
     public void SetLocalTransform(GameObject target, SerializedProperty state)
     {
         if (state == null) return;
-        target.transform.localPosition = state.FindPropertyRelative("Position").vector3Value;
-        target.transform.eulerAngles = state.FindPropertyRelative("Rotation").vector3Value;
-        Vector3 scale = state.FindPropertyRelative("Scale").vector3Value;
-        if (scale == Vector3.zero) scale = new Vector3(1, 1, 1);
-        target.transform.localScale = scale;
+        SetLocalTransform(target, state.FindPropertyRelative("Position").vector3Value, state.FindPropertyRelative("Rotation").vector3Value, state.FindPropertyRelative("Scale").vector3Value);
+    }
+
+    public void SetLocalTransform(GameObject target, GalgameCharacterEmoji emoji)
+    {
+        if (target == null) return;
+        SetLocalTransform(target, emoji.Position, emoji.Rotation, emoji.Scale);
+    }
+
+    public void SetLocalTransform(GameObject target, GalgameKeyframe keyframe)
+    {
+        if (target == null) return;
+        SetLocalTransform(target, keyframe.Position, keyframe.Rotation, keyframe.Scale);
     }
 
     public void SetLocalTransform(GameObject target, Vector3 position, Vector3 rotation, Vector3 scale)
     {
-        if (target == null || position == null || rotation == null || scale == null) return;
         target.transform.localPosition = position;
         target.transform.eulerAngles = rotation;
         if (scale == Vector3.zero) scale = new Vector3(1, 1, 1);

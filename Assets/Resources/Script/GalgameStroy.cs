@@ -6,10 +6,9 @@ using UnityEngine;
 public class GalgameStroy : MonoBehaviour {
     public GameManger GameManger;
     public bool isAuto = false;
-
     private int ActionIndex = 0;
     private List<GalgameAction> actions;
-    // Use this for initialization
+
     void Start () {
         GalgamePart [] parts = this.GetComponentsInChildren<GalgamePart>(true);
         StartPart(parts[0]);
@@ -34,31 +33,31 @@ public class GalgameStroy : MonoBehaviour {
             Debug.Log("part 结束");
             return;
         }
-
+        //如果正在说话中
         if (GameManger.isActive)
         {
             GameManger.FinishTyperEffect();
             GameManger.EndPerform();
             return;
         }
-        else
-        {
-            GameManger.ChangeUIContent(actions[ActionIndex].Serifu);
-            GameManger.Perform(actions[ActionIndex].Keyframe);
-        }
-
+        //变化台词
+        GameManger.ChangeUIContent(actions[ActionIndex].Serifu);
+        //变化人物名
         GameManger.ChangeUIName(actions[ActionIndex].Character.ToString());
+        //执行演出
+        GameManger.Perform(actions[ActionIndex].Keyframe);
+        //播放音频
         GameManger.PlayVoice(actions[ActionIndex].Voice,()=>{
             if (isAuto)
             {
                 StartAction();
             }
         });
-       // GameManger.Perform(actions[ActionIndex].Keyframe);
         ActionIndex++;
     }
 
     void Update () {
+        //注册mousedown事件
         if (Input.GetMouseButtonDown(0))
         {
             if (isAuto)

@@ -30,16 +30,16 @@ public class GalgameKeyframeDrawer : PropertyDrawer
     {
         SerializedProperty state = property;
         position.y += 20;
-        EditorGUI.PropertyField(position, property.FindPropertyRelative("Character"));
         SerializedProperty m_Chara = property.FindPropertyRelative("Character");
+        EditorGUI.PropertyField(position, m_Chara);
         if (m_Chara.objectReferenceValue != null)
         {
-            GalgameCharacterDefine m_obj = (GalgameCharacterDefine)m_Chara.objectReferenceValue;
+            GalgameCharacterDefine charaDefine = (GalgameCharacterDefine)m_Chara.objectReferenceValue;
             position.y += 20;
             List<string> showTxt = new List<string>();
-            for(int i = 0;i< m_obj.Emojis.Count; i++)
+            for(int i = 0;i< charaDefine.Emojis.Count; i++)
             {
-                showTxt.Add(m_obj.Emojis[i].EmojiName);
+                showTxt.Add(charaDefine.Emojis[i].EmojiName);
             }
             int index = property.FindPropertyRelative("EmojiSelect").intValue;
             index = EditorGUI.Popup(new Rect(position.x, position.y, 200, 16), index, showTxt.ToArray());
@@ -52,12 +52,11 @@ public class GalgameKeyframeDrawer : PropertyDrawer
                 {
                     isEditMode = true;
                     path = property.propertyPath;
-                    GalgameCharacterDefine charaDefine = (GalgameCharacterDefine)property.FindPropertyRelative("Character").objectReferenceValue;
-                    if (charaDefine == null) return;
                     GalgameCharacterEmoji emoji = charaDefine.Emojis[index];
                     m_baseImg = GalgameUtil.Instance.CreateGalgameEditorObject("角色", emoji.BaseImg);
                     m_faceImg = GalgameUtil.Instance.CreateGalgameEditorObject("表情", emoji.FaceImg, m_baseImg.transform);
                     GalgameUtil.Instance.SetLocalTransform(m_faceImg, emoji.Position, emoji.Rotation, emoji.Scale);
+                    GalgameUtil.Instance.SetLocalTransform(m_baseImg, property);
                 }
                 GUI.backgroundColor = oldGUIColor;
             }

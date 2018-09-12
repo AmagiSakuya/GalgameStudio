@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManger : MonoBehaviour {
-    // Use this for initialization
     public AudioSource BgmPlayer;
     public SpriteRenderer BgRender;
     public AudioSource VoicePlayer;
@@ -21,9 +20,12 @@ public class GameManger : MonoBehaviour {
     public bool isActive;
 
     /*****演出*****/
+    Dictionary<GalgameCharacterDefine, GameObject> characterPool;
+    //List<IEnumerable> perfoming;
 
-    void Start () {
-    
+    void OnEnable() {
+        characterPool = new Dictionary<GalgameCharacterDefine, GameObject>();
+        //perfoming = new List<IEnumerable>();
     }
 	
 	// Update is called once per frame
@@ -111,12 +113,21 @@ public class GameManger : MonoBehaviour {
 
     public void Perform(List<GalgameKeyframe> keyframes)
     {
-        int i = 0;
+       foreach(GalgameKeyframe keyframe in keyframes)
+        {
+            StartCoroutine(Perform(keyframe));
+        }
     }
-   
-    void Perform(GalgameKeyframe keyframe)
-    {
 
+    IEnumerator Perform(GalgameKeyframe keyframe)
+    {
+        yield return new WaitForSeconds(keyframe.TimeAxis);
+        if (characterPool.ContainsKey(keyframe.Character) == false){
+            GameObject _character = GalgameUtil.Instance.CreateGalgameChararcter(keyframe);
+            characterPool.Add(keyframe.Character, _character);
+        }
+        GalgameUtil.Instance.ChangeCharacterEmoji(characterPool[keyframe.Character], keyframe.Character.Emojis[keyframe.EmojiSelect]);
+        GalgameUtil.Instance.SetLocalTransform(characterPool[keyframe.Character], keyframe);
     }
 
     void Stop(float stopTime,Action callback)
