@@ -10,12 +10,12 @@ public class GalgameAnimate {
     {
         Sequence sequence = DOTween.Sequence();
         if (GalgameUtil.Instance.IsBaseChange(target, keyframe)) {
-            sequence.Join(target.GetComponent<SpriteRenderer>().DOFade(0.9f, duration));
+            sequence.Join(target.GetComponent<SpriteRenderer>().DOFade(0.95f, duration));
         }
         GameObject face = target.transform.GetChild(0).gameObject;
         if (GalgameUtil.Instance.IsFaceChange(face, keyframe))
         {
-            sequence.Join(face.GetComponent<SpriteRenderer>().DOFade(0.8f, duration));
+            sequence.Join(face.GetComponent<SpriteRenderer>().DOFade(0.95f, duration));
         }
         sequence.AppendCallback(new TweenCallback(callback));
     }
