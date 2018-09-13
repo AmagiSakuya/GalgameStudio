@@ -6,12 +6,14 @@ using UnityEngine;
 public class GalgameUtil
 {
 
-    public GameObject CreateGalgameEditorObject(string name, Sprite sprite, Transform parent = null)
+    public GameObject CreateGalgameEditorObject(string name, Sprite sprite, Transform parent = null, bool isFade = false)
     {
         GameObject obj = new GameObject();
         if (parent != null) obj.transform.SetParent(parent);
         obj.name = name;
-        obj.AddComponent<SpriteRenderer>().sprite = sprite;
+        SpriteRenderer _render = obj.AddComponent<SpriteRenderer>();
+        if (isFade) _render.color = new Color(1,1,1,0);
+        _render.sprite = sprite;
         obj.transform.position = Vector3.zero;
         obj.transform.eulerAngles = Vector3.zero;
         return obj;
@@ -20,9 +22,9 @@ public class GalgameUtil
     public GameObject CreateGalgameChararcter(GalgameKeyframe keyframe, Transform parent = null)
     {
         GalgameCharacterEmoji emoji = keyframe.Character.Emojis[keyframe.EmojiSelect];
-        GameObject baseImg = CreateGalgameEditorObject(keyframe.Character.CharacterName, emoji.BaseImg);
+        GameObject baseImg = CreateGalgameEditorObject(keyframe.Character.CharacterName, emoji.BaseImg,null,true);
         SetLocalTransform(baseImg, keyframe);
-        GameObject faceImg = CreateGalgameEditorObject(keyframe.Character.CharacterName + "_表情", emoji.FaceImg, baseImg.transform);
+        GameObject faceImg = CreateGalgameEditorObject(keyframe.Character.CharacterName + "_表情", emoji.FaceImg, baseImg.transform,true);
         SetLocalTransform(faceImg, emoji);
         return baseImg;
     }
@@ -74,6 +76,16 @@ public class GalgameUtil
         state.FindPropertyRelative("Position").vector3Value = position;
         state.FindPropertyRelative("Rotation").vector3Value = rotation;
         state.FindPropertyRelative("Scale").vector3Value = scale;
+    }
+
+    public bool IsBaseChange(GameObject baseImg,GalgameKeyframe keyframe)
+    {
+        return !baseImg.GetComponent<SpriteRenderer>().sprite.name.Equals(keyframe.Character.Emojis[keyframe.EmojiSelect].BaseImg.name);
+    }
+
+    public bool IsFaceChange(GameObject faceImg, GalgameKeyframe keyframe)
+    {
+        return !faceImg.GetComponent<SpriteRenderer>().sprite.name.Equals(keyframe.Character.Emojis[keyframe.EmojiSelect].FaceImg.name);
     }
 
     //单例模式

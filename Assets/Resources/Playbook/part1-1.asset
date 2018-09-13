@@ -51,8 +51,8 @@ MonoBehaviour:
     ChangeBg: {fileID: 0}
     Keyframe:
     - Character: {fileID: 11400000, guid: 0aa4a3ee05e1fa64baa33ef5828f124c, type: 2}
-      EmojiSelect: 2
-      Position: {x: 0.12, y: -5.02, z: 0}
+      EmojiSelect: 3
+      Position: {x: 0.55, y: -5.02, z: 0}
       Rotation: {x: 0, y: 0, z: 0}
       Scale: {x: 0.5, y: 0.5, z: 0.5}
       TimeAxis: 0
@@ -61,7 +61,13 @@ MonoBehaviour:
     Voice: {fileID: 8300000, guid: 7e29382d3047a8f4faf8da74eafae776, type: 3}
     ChangeBgm: {fileID: 0}
     ChangeBg: {fileID: 0}
-    Keyframe: []
+    Keyframe:
+    - Character: {fileID: 11400000, guid: 0aa4a3ee05e1fa64baa33ef5828f124c, type: 2}
+      EmojiSelect: 1
+      Position: {x: 0.12, y: -5.02, z: 0}
+      Rotation: {x: 0, y: 0, z: 0}
+      Scale: {x: 0.5, y: 0.5, z: 0.5}
+      TimeAxis: 0
   - Character: 0
     Serifu: "\u8A71\u304C\u65E9\u304F\u3066\u52A9\u304B\u308A\u307E\u3059"
     Voice: {fileID: 0}

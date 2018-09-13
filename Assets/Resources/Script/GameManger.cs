@@ -122,12 +122,19 @@ public class GameManger : MonoBehaviour {
     IEnumerator Perform(GalgameKeyframe keyframe)
     {
         yield return new WaitForSeconds(keyframe.TimeAxis);
+
         if (characterPool.ContainsKey(keyframe.Character) == false){
             GameObject _character = GalgameUtil.Instance.CreateGalgameChararcter(keyframe);
             characterPool.Add(keyframe.Character, _character);
         }
-        GalgameUtil.Instance.ChangeCharacterEmoji(characterPool[keyframe.Character], keyframe.Character.Emojis[keyframe.EmojiSelect]);
-        GalgameUtil.Instance.SetLocalTransform(characterPool[keyframe.Character], keyframe);
+
+        //角色过度动画
+        GalgameAnimate.Instance.DoCharacterHide(characterPool[keyframe.Character], keyframe,()=> {
+            // 位置移动
+            GalgameUtil.Instance.SetLocalTransform(characterPool[keyframe.Character], keyframe);
+            GalgameUtil.Instance.ChangeCharacterEmoji(characterPool[keyframe.Character], keyframe.Character.Emojis[keyframe.EmojiSelect]);
+            GalgameAnimate.Instance.DoCharacterShow(characterPool[keyframe.Character], keyframe, () => {});
+        });
     }
 
     void Stop(float stopTime,Action callback)
