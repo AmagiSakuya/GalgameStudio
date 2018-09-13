@@ -29,6 +29,13 @@ public class GalgameAnimate {
         sequence.AppendCallback(new TweenCallback(callback));
     }
 
+    public void DoLocalTransform(GameObject target, GalgameKeyframe keyframe, Action callback, float endValue = 1, float duration = 0.2f)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(target.transform.DOLocalMove(keyframe.Position, duration));
+        sequence.AppendCallback(new TweenCallback(callback));
+    }
+
     //单例模式
     private static GalgameAnimate _instance = null;
 

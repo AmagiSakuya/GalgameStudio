@@ -131,7 +131,8 @@ public class GameManger : MonoBehaviour {
         //角色过度动画
         GalgameAnimate.Instance.DoCharacterHide(characterPool[keyframe.Character], keyframe,()=> {
             // 位置移动
-            GalgameUtil.Instance.SetLocalTransform(characterPool[keyframe.Character], keyframe);
+            GalgameAnimate.Instance.DoLocalTransform(characterPool[keyframe.Character], keyframe,()=> { });
+            //GalgameUtil.Instance.SetLocalTransform(characterPool[keyframe.Character], keyframe);
             GalgameUtil.Instance.ChangeCharacterEmoji(characterPool[keyframe.Character], keyframe.Character.Emojis[keyframe.EmojiSelect]);
             GalgameAnimate.Instance.DoCharacterShow(characterPool[keyframe.Character], keyframe, () => {});
         });
