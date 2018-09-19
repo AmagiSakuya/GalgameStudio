@@ -121,7 +121,7 @@ public class GameManger : MonoBehaviour {
 
     IEnumerator Perform(GalgameKeyframe keyframe)
     {
-        yield return new WaitForSeconds(keyframe.TimeAxis);
+        yield return new WaitForSeconds(keyframe.Delay);
 
         if (characterPool.ContainsKey(keyframe.Character) == false){
             GameObject _character = GalgameUtil.Instance.CreateGalgameChararcter(keyframe);
@@ -130,9 +130,11 @@ public class GameManger : MonoBehaviour {
 
         //角色过度动画
         GalgameAnimate.Instance.DoCharacterHide(characterPool[keyframe.Character], keyframe,()=> {
-            // 位置移动
-            GalgameAnimate.Instance.DoLocalTransform(characterPool[keyframe.Character], keyframe,()=> { });
-            //GalgameUtil.Instance.SetLocalTransform(characterPool[keyframe.Character], keyframe);
+            // 位移 旋转 缩放
+            if (keyframe.Kpos) GalgameAnimate.Instance.DoLocalMove(characterPool[keyframe.Character], keyframe);
+            if (keyframe.Kro) GalgameAnimate.Instance.DoLocalRotate(characterPool[keyframe.Character], keyframe);
+            if (keyframe.Kscale) GalgameAnimate.Instance.DoScale(characterPool[keyframe.Character], keyframe);
+
             GalgameUtil.Instance.ChangeCharacterEmoji(characterPool[keyframe.Character], keyframe.Character.Emojis[keyframe.EmojiSelect]);
             GalgameAnimate.Instance.DoCharacterShow(characterPool[keyframe.Character], keyframe, () => {});
         });

@@ -72,13 +72,22 @@ public class GalgameKeyframeDrawer : PropertyDrawer
                 GalgameUtil.Instance.SetLocalTransform(m_baseImg, state);
             }
             position.y += 20;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("Position"));
+            EditorGUI.PropertyField(new Rect(position.x, position.y, position.xMax - 100, 16), property.FindPropertyRelative("Position"), new GUIContent("位置"));
+            if(property.FindPropertyRelative("Kpos").boolValue) GUI.backgroundColor = Color.blue;
+            if (GUI.Button(new Rect(position.xMax - 60, position.y, 50, 16), "动至")) property.FindPropertyRelative("Kpos").boolValue = !property.FindPropertyRelative("Kpos").boolValue;
+            GUI.backgroundColor = oldGUIColor;
             position.y += 20;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("Rotation"));
+            EditorGUI.PropertyField(new Rect(position.x , position.y, position.xMax - 100, 16), property.FindPropertyRelative("Rotation"), new GUIContent("旋转"));
+            if (property.FindPropertyRelative("Kro").boolValue) GUI.backgroundColor = Color.blue;
+            if (GUI.Button(new Rect(position.xMax - 60, position.y, 50, 16), "动至")) property.FindPropertyRelative("Kro").boolValue = !property.FindPropertyRelative("Kro").boolValue;
+            GUI.backgroundColor = oldGUIColor;
             position.y += 20;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("Scale"));
+            EditorGUI.PropertyField(new Rect(position.x , position.y, position.xMax - 100, 16), property.FindPropertyRelative("Scale"), new GUIContent("缩放"));
+            if (property.FindPropertyRelative("Kscale").boolValue) GUI.backgroundColor = Color.blue;
+            if (GUI.Button(new Rect(position.xMax - 60, position.y, 50, 16), "动至")) property.FindPropertyRelative("Kscale").boolValue = !property.FindPropertyRelative("Kscale").boolValue;
+            GUI.backgroundColor = oldGUIColor;
             position.y += 20;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeAxis"));
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("Delay"),new GUIContent("延时"));
             position.y += 20;
         }
     }

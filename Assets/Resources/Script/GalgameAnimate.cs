@@ -29,11 +29,25 @@ public class GalgameAnimate {
         sequence.AppendCallback(new TweenCallback(callback));
     }
 
-    public void DoLocalTransform(GameObject target, GalgameKeyframe keyframe, Action callback, float endValue = 1, float duration = 0.2f)
+    public void DoLocalMove(GameObject target, GalgameKeyframe keyframe, Action callback =null, float endValue = 1, float duration = 0.2f)
     {
         Sequence sequence = DOTween.Sequence();
         sequence.Join(target.transform.DOLocalMove(keyframe.Position, duration));
-        sequence.AppendCallback(new TweenCallback(callback));
+        if(callback!=null) sequence.AppendCallback(new TweenCallback(callback));
+    }
+
+    public void DoLocalRotate(GameObject target, GalgameKeyframe keyframe, Action callback = null, float endValue = 1, float duration = 0.2f)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(target.transform.DOLocalRotate(keyframe.Rotation, duration));
+        if (callback != null) sequence.AppendCallback(new TweenCallback(callback));
+    }
+
+    public void DoScale(GameObject target, GalgameKeyframe keyframe, Action callback = null, float endValue = 1, float duration = 0.2f)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(target.transform.DOScale(keyframe.Scale, duration));
+        if (callback != null) sequence.AppendCallback(new TweenCallback(callback));
     }
 
     //单例模式
