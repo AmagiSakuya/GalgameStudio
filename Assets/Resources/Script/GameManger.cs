@@ -111,35 +111,6 @@ public class GameManger : MonoBehaviour {
         StopAllCoroutines();
     }
 
-    public void Perform(List<GalgameKeyframe> keyframes)
-    {
-       foreach(GalgameKeyframe keyframe in keyframes)
-        {
-            StartCoroutine(Perform(keyframe));
-        }
-    }
-
-    IEnumerator Perform(GalgameKeyframe keyframe)
-    {
-        yield return new WaitForSeconds(keyframe.Delay);
-
-        if (characterPool.ContainsKey(keyframe.Character) == false){
-            GameObject _character = GalgameUtil.Instance.CreateGalgameChararcter(keyframe);
-            characterPool.Add(keyframe.Character, _character);
-        }
-
-        //角色过度动画
-        GalgameAnimate.Instance.DoCharacterHide(characterPool[keyframe.Character], keyframe,()=> {
-            // 位移 旋转 缩放
-            if (keyframe.Kpos) GalgameAnimate.Instance.DoLocalMove(characterPool[keyframe.Character], keyframe);
-            if (keyframe.Kro) GalgameAnimate.Instance.DoLocalRotate(characterPool[keyframe.Character], keyframe);
-            if (keyframe.Kscale) GalgameAnimate.Instance.DoScale(characterPool[keyframe.Character], keyframe);
-
-            GalgameUtil.Instance.ChangeCharacterEmoji(characterPool[keyframe.Character], keyframe.Character.Emojis[keyframe.EmojiSelect]);
-            GalgameAnimate.Instance.DoCharacterShow(characterPool[keyframe.Character], keyframe, () => {});
-        });
-    }
-
     void Stop(float stopTime,Action callback)
     {
         StartCoroutine(StopCoroutine(stopTime, callback));

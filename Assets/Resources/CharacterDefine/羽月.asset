@@ -14,30 +14,10 @@ MonoBehaviour:
   CharacterName: "\u7FBD\u6708"
   Emojis:
   - EmojiName: "\u901A\u5E38"
-    BaseImg: {fileID: 21300000, guid: b16376fef32cf734a8dd6ac0f4f76f32, type: 3}
-    FaceImg: {fileID: 21300000, guid: 86b90e20c3db8f44a9b5b80b75e80937, type: 3}
-    Position: {x: 0.28, y: 12.79, z: -1}
-    Rotation: {x: -0, y: 0, z: 0}
-    Scale: {x: 1, y: 1, z: 1}
-    isEditMode: 0
+    EmojiImg: {fileID: 21300000, guid: 8c8cbf7298950744091dccf8e763b14b, type: 3}
   - EmojiName: "\u901A\u5E38_\u95ED\u773C"
-    BaseImg: {fileID: 21300000, guid: b16376fef32cf734a8dd6ac0f4f76f32, type: 3}
-    FaceImg: {fileID: 21300000, guid: ef41342d699129349a56e7f617bf7e3e, type: 3}
-    Position: {x: 0.36, y: 12.88, z: -1}
-    Rotation: {x: -0, y: 0, z: 0}
-    Scale: {x: 1, y: 1, z: 1}
-    isEditMode: 0
+    EmojiImg: {fileID: 21300000, guid: b16376fef32cf734a8dd6ac0f4f76f32, type: 3}
   - EmojiName: "\u901A\u5E38_\u8BA4\u771F"
-    BaseImg: {fileID: 21300000, guid: b16376fef32cf734a8dd6ac0f4f76f32, type: 3}
-    FaceImg: {fileID: 21300000, guid: c595bf2c4d8a800449d38abc7cb3172d, type: 3}
-    Position: {x: 0.28, y: 12.82, z: -1}
-    Rotation: {x: -0, y: 0, z: 0}
-    Scale: {x: 1, y: 1, z: 1}
-    isEditMode: 0
+    EmojiImg: {fileID: 21300000, guid: 956a0dce9285eb041b3ef9d1b3365afb, type: 3}
   - EmojiName: "\u6B63\u9762_\u901A\u5E38"
-    BaseImg: {fileID: 21300000, guid: 956a0dce9285eb041b3ef9d1b3365afb, type: 3}
-    FaceImg: {fileID: 21300000, guid: 6a02ef481af2e4f42ad53a36b1205268, type: 3}
-    Position: {x: -0.63, y: 12.98, z: -1}
-    Rotation: {x: -0, y: 0, z: 0}
-    Scale: {x: 1, y: 1, z: 1}
-    isEditMode: 0
+    EmojiImg: {fileID: 21300000, guid: 1aca5bfd815044943848af4f70b3bb84, type: 3}
