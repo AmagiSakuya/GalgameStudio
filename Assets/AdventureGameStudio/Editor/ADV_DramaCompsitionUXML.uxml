@@ -1,4 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:TextField picking-mode="Ignore" label="ChatarcterName" name="CharacterName" value="顿旦" binding-path="characterName" style="height: auto; font-size: 12px; -unity-font: url(&apos;/Assets/AdventureGameStudio/Fonts/msyh.ttc&apos;);" />
-    <ui:TextField picking-mode="Ignore" label="Content" name="Content" multiline="false" binding-path="content" style="white-space: nowrap; -unity-font: url(&apos;/Assets/AdventureGameStudio/Fonts/msyh.ttc&apos;); height: auto; -unity-font-style: normal; min-height: auto; -unity-text-align: middle-left;" />
-</ui:UXML>

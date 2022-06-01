@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:editor="UnityEditor.UIElements" xmlns:engine="UnityEngine.UIElements" xmlns="UnityEditor.PackageManager.UI" elementFormDefault="qualified" targetNamespace="AdventureGameEditor" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:editor="UnityEditor.UIElements" xmlns:engine="UnityEngine.UIElements" xmlns="UnityEditor.Overlays" elementFormDefault="qualified" targetNamespace="AdventureGameEditor" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="UnityEngine.UIElements.xsd" namespace="UnityEngine.UIElements" />
-  <xs:complexType name="ADV_DramaScriptType">
+  <xs:complexType name="ADV_DramaCompsitionType">
     <xs:complexContent mixed="false">
       <xs:restriction base="engine:VisualElementType">
         <xs:attribute default="" name="name" type="xs:string" use="optional" />
@@ -14,11 +14,11 @@
         <xs:attribute default="" name="class" type="xs:string" use="optional" />
         <xs:attribute default="" name="content-container" type="xs:string" use="optional" />
         <xs:attribute default="" name="style" type="xs:string" use="optional" />
-        <xs:attribute default="default_value" name="string-attr" type="xs:string" use="optional" />
-        <xs:attribute default="2" name="int-attr" type="xs:int" use="optional" />
+        <xs:attribute default="" name="CharacterName" type="xs:string" use="optional" />
+        <xs:attribute default="" name="Content" type="xs:string" use="optional" />
         <xs:anyAttribute processContents="lax" />
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="ADV_DramaScript" substitutionGroup="engine:VisualElement" xmlns:q1="AdventureGameEditor" type="q1:ADV_DramaScriptType" />
+  <xs:element name="ADV_DramaCompsition" substitutionGroup="engine:VisualElement" xmlns:q1="AdventureGameEditor" type="q1:ADV_DramaCompsitionType" />
 </xs:schema>

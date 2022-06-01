@@ -1,22 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace AdventureGame
 {
-    public class AdventureGameBrain : MonoBehaviour
+    public class AdventureGameBrain : Singleton<AdventureGameBrain>
     {
+        public AdventureGameConfig gameConfig;
+
+        [Header("样式设置")]
+        public GameDialogStyleDefine dialogStyleDefine;
+
+        [Header("模块引用")]
+        public AdventureGameDramaPlayer advPlayer;
+
         // Start is called before the first frame update
         void Start()
         {
-
+            gameConfig.Apply += ApplyGameConfig;
+            dialogStyleDefine.Apply += ApplyDialogStyleDefine;
+            ApplyGameConfig();
+            ApplyDialogStyleDefine();
         }
 
-        // Update is called once per frame
-        void Update()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+            gameConfig.Apply -= ApplyGameConfig;
+            dialogStyleDefine.Apply -= ApplyDialogStyleDefine;
+        }
 
+        public void ApplyGameConfig()
+        {
+            if (gameConfig == null)
+            {
+                Debug.LogError("GameConfig为空", gameObject);
+                return;
+            }
+            advPlayer.SetSoundSettings(gameConfig.soundSettings);
+        }
+
+        public void ApplyDialogStyleDefine()
+        {
+            advPlayer.dialog.SetDefine(dialogStyleDefine, gameConfig.textSettings.font);
         }
     }
 }
-

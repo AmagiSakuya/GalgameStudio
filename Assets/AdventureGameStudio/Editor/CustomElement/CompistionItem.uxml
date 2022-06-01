@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="CompistionItem" style="position: relative; height: 58px; flex-direction: column; margin-bottom: 0; padding-top: 3px; padding-bottom: 3px; padding-left: 0; padding-right: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgb(118, 118, 118); border-right-color: rgb(118, 118, 118); border-top-color: rgb(118, 118, 118); border-bottom-color: rgb(118, 118, 118); margin-top: 0; margin-left: 0; margin-right: 0;">
+        <ui:GroupBox style="padding-left: 3px; padding-top: 3px; padding-bottom: 3px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-left-color: rgb(128, 128, 128); border-right-color: rgb(128, 128, 128); border-top-color: rgb(128, 128, 128); border-bottom-color: rgb(128, 128, 128); padding-right: 3px;">
+            <ui:VisualElement name="compistionItemHead" style="flex-direction: row; height: 20px;">
+                <ui:Label text="01" display-tooltip-when-elided="true" name="Index" style="flex-grow: 0; -unity-text-align: middle-left; flex-shrink: 1; width: auto;" />
+                <ui:Label text="CharacterName" display-tooltip-when-elided="true" name="CharacterName" style="flex-grow: 1; -unity-text-align: middle-left;" />
+            </ui:VisualElement>
+            <ui:Label text="Content" display-tooltip-when-elided="true" name="Cotent" style="flex-wrap: nowrap; -unity-text-align: middle-left; height: 20px;" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>
