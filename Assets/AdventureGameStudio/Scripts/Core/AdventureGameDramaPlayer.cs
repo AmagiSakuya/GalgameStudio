@@ -20,6 +20,8 @@ namespace AdventureGame
         AudioSource m_systemPlayer;
         AudioSource m_hSceneEffectPlayer;
 
+        TextMeshPro_UIAnime m_cotentUIAnime;
+        float m_textTypeSpeed;
         // Start is called before the first frame update
         private void Awake()
         {
@@ -41,6 +43,14 @@ namespace AdventureGame
             m_hSceneEffectPlayer.volume = m_soundSettings.HSceneEffectVolume;
         }
 
+        public void SetTextSettings(ADVTextSettings m_textSettings)
+        {
+            dialog.characterName.font = m_textSettings.font;
+            dialog.cotent.font = m_textSettings.font;
+            m_textTypeSpeed = Util.Remap(m_textSettings.textTypeWriterSpeed, 0.01f, 1f, 0.1f, 0.001f);
+            //d.animeDefine
+        }
+
         void Init()
         {
             m_voicePlayer = gameObject.AddComponent<AudioSource>();
@@ -48,14 +58,25 @@ namespace AdventureGame
             m_effectPlayer = gameObject.AddComponent<AudioSource>();
             m_systemPlayer = gameObject.AddComponent<AudioSource>();
             m_hSceneEffectPlayer = gameObject.AddComponent<AudioSource>();
+            m_cotentUIAnime = dialog.cotent.GetComponent<TextMeshPro_UIAnime>();
         }
 
         void PlayCompistion(AdventureGameDrama drama, int index)
         {
-
+            //¶Ô»°ÎÄ×Ö
+            if (m_cotentUIAnime.IsPlaying())
+            {
+                m_cotentUIAnime.Dispose();
+                return;
+            }
+            m_cotentUIAnime.Dispose();
             var m_compisition = drama.compositions[index];
             dialog.cotent.text = m_compisition.content;
             dialog.characterName.text = m_compisition.characterName;
+            m_cotentUIAnime.animeDefine.typeWriterAnimeSettings.duration = m_textTypeSpeed * dialog.cotent.text.Length;
+            m_cotentUIAnime.Play();
+
+            //ÓïÑÔ
             if (m_compisition.voice)
             {
                 m_voicePlayer.clip = m_compisition.voice;
@@ -66,12 +87,14 @@ namespace AdventureGame
                 m_voicePlayer.Stop();
             }
 
+            //BGM
             if (m_compisition.bgm)
             {
                 m_bgmPlayer.clip = m_compisition.bgm;
                 m_bgmPlayer.Play();
             }
 
+            //±³¾°
             if (m_compisition.background)
             {
                 backgroundImage.color = Color.white;

@@ -14,7 +14,7 @@ namespace Sakuya.UnityUIAnime
 
         Coroutine m_animeCoroutine;
 
-        protected TComp target
+        public TComp target
         {
             get
             {
@@ -31,7 +31,7 @@ namespace Sakuya.UnityUIAnime
             }
         }
 
-        protected TSettings animeDefine
+        public TSettings animeDefine
         {
             get
             {
@@ -83,6 +83,11 @@ namespace Sakuya.UnityUIAnime
             m_animeCoroutine = null;
             time = 0;
             Resume();
+        }
+
+        public virtual bool IsPlaying()
+        {
+            return m_animeCoroutine != null && !pause;
         }
 
         protected void BaseLoopPlay()

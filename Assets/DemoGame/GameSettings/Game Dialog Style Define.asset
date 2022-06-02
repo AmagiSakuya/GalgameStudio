@@ -16,7 +16,7 @@ MonoBehaviour:
   charaNameTextSettings:
     color: {r: 1, g: 1, b: 1, a: 1}
     fontSize: 40
-    outLineWidth: 0.5
+    outLineWidth: 1
     outLineColor: {r: 0, g: 0, b: 0, a: 1}
   contentTextSettings:
     color: {r: 1, g: 1, b: 1, a: 1}

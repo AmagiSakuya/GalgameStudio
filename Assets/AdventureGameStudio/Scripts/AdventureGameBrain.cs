@@ -7,6 +7,7 @@ namespace AdventureGame
 {
     public class AdventureGameBrain : Singleton<AdventureGameBrain>
     {
+        [Header("游戏设置")]
         public AdventureGameConfig gameConfig;
 
         [Header("样式设置")]
@@ -39,11 +40,13 @@ namespace AdventureGame
                 return;
             }
             advPlayer.SetSoundSettings(gameConfig.soundSettings);
+            advPlayer.SetTextSettings(gameConfig.textSettings);
         }
 
         public void ApplyDialogStyleDefine()
         {
             advPlayer.dialog.SetDefine(dialogStyleDefine, gameConfig.textSettings.font);
         }
+
     }
 }

@@ -35,15 +35,13 @@ namespace Sakuya.UnityUIAnime
 
         protected void SetAnimeByTime<TSettings>(TSettings[] quene, Action<TSettings, float> PlayAnimeByTime, Action CompleteCallback = null) where TSettings : BaseAnimeSettings
         {
-            float countTime = 0;
             bool isTimeInQuene = false;
             for (int i = 0; i < quene.Length; i++)
             {
                 float m_thisQueneCostTime = quene[i].delay + quene[i].duration;
-                if (countTime <= time && time <= countTime + m_thisQueneCostTime)
+                if (time <= m_thisQueneCostTime)
                 {
-                    float timeInthis = time - countTime;
-                    float m_time = timeInthis - quene[i].delay;
+                    float m_time = time - quene[i].delay;
                     if (quene[i].timeDecimalPoint >= 0)
                     {
                         m_time = (float)Math.Round(m_time, quene[i].timeDecimalPoint);
@@ -54,7 +52,7 @@ namespace Sakuya.UnityUIAnime
                 }
                 else
                 {
-                    countTime += m_thisQueneCostTime;
+                    PlayAnimeByTime(quene[i], m_thisQueneCostTime);
                 }
             }
 

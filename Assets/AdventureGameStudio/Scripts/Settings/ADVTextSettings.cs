@@ -10,7 +10,7 @@ namespace AdventureGame
     {
         public TMP_FontAsset font;
         public TMP_FontAsset[] fonts;
-        [Range(0, 2)] public float textTypeWriterSpeed = 1;
+        [Range(0.01f, 1.0f)] public float textTypeWriterSpeed = 0.4f;
         public bool skipUnreadedText = false;
     }
 

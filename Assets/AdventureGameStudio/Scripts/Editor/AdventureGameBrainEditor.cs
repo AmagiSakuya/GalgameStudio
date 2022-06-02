@@ -16,13 +16,9 @@ namespace AdventureGameEditor
             m_target = (AdventureGameBrain)target;
         }
 
-
         public override void OnInspectorGUI()
         {
-            //base.OnInspectorGUI();
-            DrawPropertiesExcluding(serializedObject, new string[] { "dialogStyleDefine" });
-
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("dialogStyleDefine"));
+            base.OnInspectorGUI();
 
             if (!Application.isPlaying && m_target.dialogStyleDefine != null)
             {
