@@ -10,7 +10,7 @@ Shader "Hidden/ADVGame/Image"
     }
     SubShader
     {
-        // No culling or depth
+        Tags { "Queue"="Transparent" }
         Cull Off ZWrite Off ZTest Always
         Blend SrcAlpha OneMinusSrcAlpha
 
