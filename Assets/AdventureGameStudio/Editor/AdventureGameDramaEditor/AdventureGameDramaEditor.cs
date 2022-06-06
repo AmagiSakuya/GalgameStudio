@@ -13,7 +13,9 @@ public class AdventureGameDramaEditor : EditorWindow
     ListView compistionList;
     VisualTreeAsset compistionItemPrefab;
 
-    [MenuItem("ADV Studio/Drama Editor")]
+    string m_basePath = "Assets/AdventureGameStudio/Editor/AdventureGameDramaEditor";
+
+    [MenuItem("ADV Studio/¾ç±¾±à¼­Æ÷")]
     public static void ShowWindow()
     {
         AdventureGameDramaEditor wnd = GetWindow<AdventureGameDramaEditor>();
@@ -35,10 +37,10 @@ public class AdventureGameDramaEditor : EditorWindow
     void LoadHTML()
     {
         VisualElement root = rootVisualElement;
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/AdventureGameStudio/Editor/AdventureGameDramaEditor.uxml");
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/AdventureGameStudio/Editor/AdventureGameDramaEditor.uss");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(m_basePath + "/AdventureGameDramaEditor.uxml");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(m_basePath + "/AdventureGameDramaEditor.uss");
 
-        compistionItemPrefab = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/AdventureGameStudio/Editor/CustomElement/CompistionItem.uxml");
+        compistionItemPrefab = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(m_basePath + "/CustomElement/CompistionItem.uxml");
         root.styleSheets.Add(styleSheet);
         visualTree.CloneTree(root);
         compistionList = rootVisualElement.Q<ListView>("CompsitionList");
@@ -113,7 +115,6 @@ public class AdventureGameDramaEditor : EditorWindow
         if (m_advDrama == null)
         {
             compistionList.itemsSource = new List<ADV_Drama_Composition>();
-            ClearMainBody();
             rootVisualElement.Unbind();
         }
         else
@@ -122,10 +123,5 @@ public class AdventureGameDramaEditor : EditorWindow
             rootVisualElement.Bind(new SerializedObject(m_advDrama));
         };
         compistionList.RefreshItems();
-    }
-
-    void ClearMainBody()
-    {
-
     }
 }

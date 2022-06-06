@@ -7,45 +7,45 @@ namespace AdventureGame
 {
     public class AdventureGameBrain : Singleton<AdventureGameBrain>
     {
-        [Header("游戏设置")]
+        [Header("娓告垙璁剧疆")]
         public AdventureGameConfig gameConfig;
 
-        [Header("样式设置")]
-        public GameDialogStyleDefine dialogStyleDefine;
+        [Header("鏍峰紡璁剧疆")]
+        public GameDialogStyleDefine dafaultDialogStyle;
 
-        [Header("模块引用")]
+        [Header("妯″潡寮曠敤")]
         public AdventureGameDramaPlayer advPlayer;
 
         // Start is called before the first frame update
         void Start()
         {
             gameConfig.Apply += ApplyGameConfig;
-            dialogStyleDefine.Apply += ApplyDialogStyleDefine;
+            //dialogStyleDefine.Apply += ApplyDialogStyleDefine;
             ApplyGameConfig();
-            ApplyDialogStyleDefine();
+            //ApplyDialogStyleDefine();
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
             gameConfig.Apply -= ApplyGameConfig;
-            dialogStyleDefine.Apply -= ApplyDialogStyleDefine;
+            //dialogStyleDefine.Apply -= ApplyDialogStyleDefine;
         }
 
         public void ApplyGameConfig()
         {
             if (gameConfig == null)
             {
-                Debug.LogError("GameConfig为空", gameObject);
+                Debug.LogError("GameConfig涓虹┖", gameObject);
                 return;
             }
             advPlayer.SetSoundSettings(gameConfig.soundSettings);
             advPlayer.SetTextSettings(gameConfig.textSettings);
         }
 
-        public void ApplyDialogStyleDefine()
+        public void ApplyDialogStyle()
         {
-            advPlayer.dialog.SetDefine(dialogStyleDefine, gameConfig.textSettings.font);
+            //advPlayer.SetDefine(dialogStyleDefine, gameConfig.textSettings.font);
         }
 
     }

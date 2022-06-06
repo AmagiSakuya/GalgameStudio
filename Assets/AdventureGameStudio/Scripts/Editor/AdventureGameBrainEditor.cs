@@ -19,12 +19,11 @@ namespace AdventureGameEditor
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-
-            if (!Application.isPlaying && m_target.dialogStyleDefine != null)
-            {
-                m_target.ApplyDialogStyleDefine();
-                SceneView.RepaintAll();
-            }
+            //if (!Application.isPlaying && m_target.dialogStyleDefine != null)
+            //{
+            //    m_target.ApplyDialogStyleDefine();
+            //    SceneView.RepaintAll();
+            //}
         }
     }
 }
