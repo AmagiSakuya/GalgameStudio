@@ -2,10 +2,10 @@ Shader "Hidden/ADVGame/Image"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        _MainTex ("Texture", 2D) = "black" {}
         [Toggle] _USE_RULE_TEX("Use RuleTex",Float) = 0
         _RuleTex("RuleTex", 2D) = "black" {}
-        _SoftRange("SoftRange",Range(0.0,1.0)) = 0.0
+        _SoftRange("SoftRange",Range(0.0,1.0)) = 0.05
         _Progress("Progress",Range(0.0,1.0)) = 0.0
     }
     SubShader
@@ -19,7 +19,6 @@ Shader "Hidden/ADVGame/Image"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #pragma multi_compile _ _USE_RULE_TEX_ON
 
             #include "UnityCG.cginc"
 
@@ -47,21 +46,19 @@ Shader "Hidden/ADVGame/Image"
             uniform sampler2D _RuleTex;
             uniform float _SoftRange;
             uniform float _Progress;
+            uniform float _USE_RULE_TEX;
 
             float4 frag (v2f i) : SV_Target
             {
                 float4 texColor = tex2D(_MainTex, i.uv);
-
-                #ifdef _USE_RULE_TEX_ON
-                    float maskValue = tex2D(_RuleTex, i.uv).r;
-                    float offset = lerp(-_SoftRange, _SoftRange, _Progress);
-                    float minValue = _Progress - _SoftRange + offset;
-                    float maxValue = _Progress + _SoftRange + offset;
-                    float alpha = smoothstep(minValue, maxValue, maskValue);
-                #else
-                    float alpha = 1.0 -  _Progress;
-                #endif
-
+                float maskValue = tex2D(_RuleTex, i.uv).r;
+                float offset = lerp(-_SoftRange, _SoftRange, _Progress);
+                float minValue = _Progress - _SoftRange + offset;
+                float maxValue = _Progress + _SoftRange + offset;
+                float alpha1 = smoothstep(minValue, maxValue, maskValue);
+                float alpha2 = 1.0 -  _Progress;
+                float alpha = _USE_RULE_TEX == 0 ? alpha2 : alpha1;
+                alpha = texColor.a < alpha ? texColor.a : alpha;
                 return float4(texColor.rgb, alpha);
             }
             ENDCG

@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/AdventureGameStudio/Editor/AdventureGameDramaEditor.uss?fileID=7433441132597879392&amp;guid=bd247d574f1252f43ac48aee8aff6f0d&amp;type=3#AdventureGameDramaEditor" />
+    <Style src="project://database/Assets/AdventureGameStudio/Editor/AdventureGameDramaEditor/AdventureGameDramaEditor.uss?fileID=7433441132597879392&amp;guid=bd247d574f1252f43ac48aee8aff6f0d&amp;type=3#AdventureGameDramaEditor" />
     <ui:VisualElement name="window_container" class="window_container">
         <ui:VisualElement name="Head" style="flex-direction: row; border-bottom-width: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); align-items: stretch; justify-content: flex-start; padding-bottom: 5px;">
             <uie:ObjectField label="ADV剧本" allow-scene-objects="false" name="ADVDramaSelector" style="-unity-text-align: middle-left; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 5px; margin-right: 5px; margin-top: 3px; margin-bottom: 3px; flex-shrink: 0; flex-grow: 1;" />
@@ -11,7 +11,7 @@
                 <ui:ScrollView class="padding_5" style="flex-grow: 1;">
                     <ui:TextField picking-mode="Ignore" label="剧本名" binding-path="m_name" style="flex-direction: row; justify-content: space-around; align-items: stretch;" />
                     <uie:PropertyField binding-path="nextDrama" name="nextDrama" label="下一场剧本" />
-                    <ui:GroupBox>
+                    <ui:GroupBox class="group_box">
                         <uie:PropertyField binding-path="OnEnter" label="进入事件回调" name="OnEnter" />
                         <uie:PropertyField binding-path="OnExit" label="退出事件回调" name="OnExit" />
                     </ui:GroupBox>
@@ -28,14 +28,25 @@
             <ui:VisualElement name="MainBody" class="padding_5" style="width: 50%;">
                 <ui:Label text="对话剧本" display-tooltip-when-elided="true" name="mainBodyTitle" style="border-bottom-width: 1px; border-left-color: rgb(32, 32, 32); border-right-color: rgb(32, 32, 32); border-top-color: rgb(32, 32, 32); border-bottom-color: rgb(32, 32, 32); font-size: 12px; -unity-font-style: bold; padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;" />
                 <ui:ScrollView name="MainBody" style="height: 100%; width: 100%; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
-                    <ui:TextField picking-mode="Ignore" label="人物名" binding-path="m_selectedCompistion.characterName" name="charName" />
-                    <ui:TextField picking-mode="Ignore" label="对话内容" binding-path="m_selectedCompistion.content" multiline="true" name="advcontent" />
-                    <uie:PropertyField binding-path="m_selectedCompistion.voice" label="语音" name="Voice" />
-                    <uie:PropertyField binding-path="m_selectedCompistion.bgm" label="背景音" name="BGM" />
-                    <uie:PropertyField binding-path="m_selectedCompistion.background" label="背景图片" name="BackgroundImage" />
-                    <ui:GroupBox>
+                    <ui:GroupBox name="BaseBox" class="group_box">
+                        <ui:TextField picking-mode="Ignore" label="人物名" binding-path="m_selectedCompistion.characterName" name="charName" />
+                        <ui:TextField picking-mode="Ignore" label="对话内容" binding-path="m_selectedCompistion.content" multiline="true" name="advcontent" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.voice" label="语音" name="Voice" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.bgm" label="背景音" name="BGM" />
+                    </ui:GroupBox>
+                    <ui:GroupBox name="BackgroundBox" class="group_box">
+                        <uie:PropertyField binding-path="m_selectedCompistion.background" label="背景图片" name="BackgroundImage" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundRuleImage" label="背景动画RuleImage" name="BackgroundRuleImage" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundFadeDuration" label="背景动画时间" name="BackgroundFadeDuration" />
+                    </ui:GroupBox>
+                    <ui:GroupBox name="LayeAnimeBox" class="group_box">
+                        <ui:Foldout text="图层动画">
+                            <ui:ListView focusable="true" binding-path="m_selectedCompistion.layerAnimes" virtualization-method="DynamicHeight" show-border="false" show-add-remove-footer="true" reorderable="true" show-bound-collection-size="false" reorder-mode="Animated" />
+                        </ui:Foldout>
+                    </ui:GroupBox>
+                    <ui:GroupBox name="EventBox" class="group_box">
                         <uie:PropertyField binding-path="m_selectedCompistion.OnEnter" label="进入事件回调" />
-                        <uie:PropertyField binding-path="m_selectedCompistion.OnExit" label="退出事件回调" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.OnExit" label="退出事件回调" reorderable="true" />
                     </ui:GroupBox>
                 </ui:ScrollView>
             </ui:VisualElement>

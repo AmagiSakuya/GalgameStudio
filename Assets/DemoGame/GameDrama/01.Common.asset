@@ -19,6 +19,17 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: b95a6a21d52ce9044858c25736438bf9, type: 3}
     bgm: {fileID: 8300000, guid: 7483754d6d031454288e460f1ef087be, type: 3}
     background: {fileID: 21300000, guid: 3ce36248dcc580246bd9e3e17580005d, type: 3}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes:
+    - image: {fileID: 21300000, guid: a563d5e34a74b3c409a9b98bdb3937b3, type: 3}
+      ruleImage: {fileID: 0}
+      duration: 1
+      layer: 0
+      pos: 0
+      posOffset: {x: 0, y: 0}
+      scale: 0
+      scaleOffset: {x: 0, y: 0}
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -30,7 +41,19 @@ MonoBehaviour:
     content: "\u5B66\u751F\u3058\u3083\u306A\u3044\u3093\u3067\u3059\u304B\uFF1F"
     voice: {fileID: 0}
     bgm: {fileID: 0}
-    background: {fileID: 0}
+    background: {fileID: 21300000, guid: ce133b26e5a337c4ca0188cca3435b7b, type: 3}
+    backgroundRuleImage: {fileID: 2800000, guid: a2b5102e42bfb914f988a82d6220acb0,
+      type: 3}
+    backgroundFadeDuration: -1
+    layerAnimes:
+    - image: {fileID: 21300000, guid: afcf266758409884c837510d6b48512a, type: 3}
+      ruleImage: {fileID: 0}
+      duration: 1
+      layer: 0
+      pos: 0
+      posOffset: {x: 0, y: 0}
+      scale: 0
+      scaleOffset: {x: 0, y: 0}
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -42,7 +65,11 @@ MonoBehaviour:
     content: "\u3044\u3084\u3001\u30EF\u30BF\u30B7\u3082\u30AD\u30DF\u305F\u3061\u3068\u540C\u3058\u5B66\u751F\u3060\u3002\u8A00\u8449\u4E0D\u8DB3\u3067\u6E08\u307E\u306A\u3044\u3002\u30EF\u30BF\u30B7\u306F\"\u4E8C\u6761\u9662\u7FBD\u6708\"\u3068\u3044\u3046"
     voice: {fileID: 8300000, guid: 0fdfc11a6f9dd614b9972f1762d2c991, type: 3}
     bgm: {fileID: 0}
-    background: {fileID: 0}
+    background: {fileID: 21300000, guid: a4f0bad53e4dfda4983af4f063c12c06, type: 3}
+    backgroundRuleImage: {fileID: 2800000, guid: feac70cc619dc7f4d9390e5cab80284d,
+      type: 3}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -54,7 +81,10 @@ MonoBehaviour:
     content: "\u5168\u4F53\u3092\u7D71\u62EC\u3057\u3066\u3044\u308B\u306E\u306F\u6559\u54E1\u3060\u304C\u3001\u5404\u5BEE\u3092\u7BA1\u7406\u3057\u3066\u3044\u308B\u306E\u306F\u5BEE\u9577\u3067\u3042\u308B\u5B66\u751F\u306A\u3093\u3060"
     voice: {fileID: 8300000, guid: f7d480edb167edf4eb88181efc487f00, type: 3}
     bgm: {fileID: 0}
-    background: {fileID: 0}
+    background: {fileID: 21300000, guid: 3ce36248dcc580246bd9e3e17580005d, type: 3}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -67,6 +97,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: 7e29382d3047a8f4faf8da74eafae776, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -79,6 +112,9 @@ MonoBehaviour:
     voice: {fileID: 0}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -91,6 +127,9 @@ MonoBehaviour:
     voice: {fileID: 0}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -103,6 +142,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: 0db26fc99e0ad9c4c96b0eae2cb0a137, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -115,6 +157,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: 5093d0dd9b64b0f42803afc904005506, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -127,6 +172,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: 7d354bda53bfe2a488461d0a76aa32ff, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -139,6 +187,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: 8c8e452b8ebc99f4fbc1401fce5f895d, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -151,6 +202,9 @@ MonoBehaviour:
     voice: {fileID: 0}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -163,6 +217,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: c757d3dd5dce8204797626fc30bf88f5, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -175,6 +232,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: be10f901d583e2742ae69ab8428d8525, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -187,6 +247,9 @@ MonoBehaviour:
     voice: {fileID: 0}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -199,6 +262,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: e26e82664127bcd4c8b9d197c5e3a714, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -211,6 +277,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: 89eda180d28510d43952758f25b47c81, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -223,6 +292,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: fc19d71a4944a7d4fb339d025ad485b7, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -235,6 +307,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: bfcae7c5772d38142bd51b8d580d0d96, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -244,9 +319,12 @@ MonoBehaviour:
     branchs: []
   - characterName: "\u66C9"
     content: "\u3058\u3083\u3042\u2026\u3053\u308C\u304B\u3089\u3088\u308D\u3057\u304F\u3001\u4E8C\u6761\u9662\u3055\u3093"
-    voice: {fileID: 8300000, guid: b95a6a21d52ce9044858c25736438bf9, type: 3}
+    voice: {fileID: 0}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -259,6 +337,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: ddd93136cc8d03e4a901c0af2cc39618, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -271,6 +352,9 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: efaae7db94eb4f04694ca27e6bbccfb8, type: 3}
     bgm: {fileID: 0}
     background: {fileID: 0}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes: []
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -291,6 +375,17 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: b95a6a21d52ce9044858c25736438bf9, type: 3}
     bgm: {fileID: 8300000, guid: 7483754d6d031454288e460f1ef087be, type: 3}
     background: {fileID: 21300000, guid: 3ce36248dcc580246bd9e3e17580005d, type: 3}
+    backgroundRuleImage: {fileID: 0}
+    backgroundFadeDuration: -1
+    layerAnimes:
+    - image: {fileID: 21300000, guid: a563d5e34a74b3c409a9b98bdb3937b3, type: 3}
+      ruleImage: {fileID: 0}
+      duration: 1
+      layer: 0
+      pos: 0
+      posOffset: {x: 0, y: 0}
+      scale: 0
+      scaleOffset: {x: 0, y: 0}
     OnEnter:
       m_PersistentCalls:
         m_Calls: []

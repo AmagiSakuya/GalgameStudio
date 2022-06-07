@@ -11,15 +11,19 @@ namespace AdventureGame
     {
         public AdventureGameDrama enterDrama;
         [ReadOnly] public int currentIndex;
+
         [Header("UI引用")]
-        [Tooltip("背景图片")] 
-        public Image backgroundImage;
-        [Tooltip("对话框背景图片")] 
+        [Tooltip("对话框背景图片")]
         public Image dialogBackgroundImage;
-        [Tooltip("角色名文本框")] 
+        [Tooltip("角色名文本框")]
         public TMP_Text characterName;
-        [Tooltip("对话文本框")] 
+        [Tooltip("对话文本框")]
         public TMP_Text cotent;
+
+        [Header("模块引用")]
+        [Tooltip("背景图片")]
+        public AdventureGameImageFader backgroundImageFader;
+        public AdventureGameImageFader Layer1ImageFader;
 
         AudioSource m_voicePlayer;
         AudioSource m_bgmPlayer;
@@ -27,8 +31,10 @@ namespace AdventureGame
         AudioSource m_systemPlayer;
         AudioSource m_hSceneEffectPlayer;
 
+        //打字机动画控制
         TextMeshPro_UIAnime m_cotentUIAnime;
         float m_textTypeSpeed;
+
         // Start is called before the first frame update
         private void Awake()
         {
@@ -40,6 +46,7 @@ namespace AdventureGame
             PlayCompistion(enterDrama, currentIndex);
         }
 
+        #region 流程控制
         void Init()
         {
             m_voicePlayer = gameObject.AddComponent<AudioSource>();
@@ -55,6 +62,7 @@ namespace AdventureGame
         /// </summary>
         void PlayCompistion(AdventureGameDrama drama, int index)
         {
+            #region 基础
             //对话文字
             if (m_cotentUIAnime.IsPlaying())
             {
@@ -81,14 +89,48 @@ namespace AdventureGame
                 m_bgmPlayer.clip = m_compisition.bgm;
                 m_bgmPlayer.Play();
             }
+            #endregion
 
+            #region 背景
             //背景
             if (m_compisition.background)
             {
-                backgroundImage.color = Color.white;
-                backgroundImage.sprite = m_compisition.background;
+                backgroundImageFader.DoImageFadeAnime(m_compisition.background, m_compisition.backgroundFadeDuration, m_compisition.backgroundRuleImage);
             }
+            #endregion
+
+            #region 图层演出
+            for (int i = 0; i < m_compisition.layerAnimes.Length; i++)
+            {
+                ADV_ImageTransition layerAnime = m_compisition.layerAnimes[i];
+                if (layerAnime.layer == ADV_ImageTransitionLayer.Layer1)
+                {
+                    Layer1ImageFader.PrepareImage(layerAnime.image, layerAnime.duration, layerAnime.ruleImage, true);
+                    //CalcImageRectTrans(layerAnime, Layer1ImageFader.m_imagePool[1].GetComponent<Image>());
+                    Layer1ImageFader.m_imagePool[1].Play();
+                }
+            }
+
+            #endregion
+
+            #region 头像演出
+
+            #endregion
+
+            #region 样式演出
+
+            #endregion
+
         }
+
+        #endregion
+
+        #region 图层演出
+        void CalcImageRectTrans(ADV_ImageTransition settings, Image image)
+        {
+
+        }
+        #endregion
 
         #region 应用系统设定
         public void SetSoundSettings(ADVSoundSettings m_soundSettings)
@@ -109,28 +151,7 @@ namespace AdventureGame
         }
         #endregion
 
-        //public void SetDefine(GameDialogStyleDefine value, TMP_FontAsset font = null)
-        //{
-        //    //设置背景图片
-        //    dialogBackgroundImage.sprite = value.backgroundImage;
-        //    //设置文本颜色
-        //    SetADVTextSettings(characterName, value.charaNameTextSettings, font);
-        //    SetADVTextSettings(cotent, value.contentTextSettings, font);
-        //}
-
-        //public void SetADVTextSettings(TMP_Text m_text, ADVDramaTextSettings settings, TMP_FontAsset font = null)
-        //{
-        //    m_text.color = settings.color;
-        //    m_text.fontSize = settings.fontSize;
-        //    if (font != null)
-        //    {
-        //        m_text.font = font;
-        //    }
-        //    m_text.fontSharedMaterial.SetColor("_OutlineColor", settings.outLineColor);
-        //    m_text.fontSharedMaterial.SetFloat("_OutlineWidth", settings.outLineWidth);
-        //    m_text.fontSharedMaterial.SetFloat("_FaceDilate", settings.outLineWidth);
-        //}
-
+        #region 用户输入
         //下一步
         void OnADVControl_Next()
         {
@@ -150,5 +171,7 @@ namespace AdventureGame
                 PlayCompistion(enterDrama, currentIndex);
             }
         }
+
+        #endregion
     }
 }
