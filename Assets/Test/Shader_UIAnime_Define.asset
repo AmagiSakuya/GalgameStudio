@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190c4fd143614424c9d4d20c5fe1ead8, type: 3}
-  m_Name: "ADV_Text_UI Anime_\u6253\u5370\u673A"
+  m_Script: {fileID: 11500000, guid: b9221d213baa2e743951d5d99c58eb52, type: 3}
+  m_Name: Shader_UIAnime_Define
   m_EditorClassIdentifier: 
-  typeWriterAnimeSettings:
-    duration: 0.49600002
-    delay: 0.1
+  floatAnimes:
+  - duration: 1
+    delay: 1
     curve:
       serializedVersion: 2
       m_Curve:
@@ -40,3 +40,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     timeDecimalPoint: -1
+    from: 0
+    to: 1
+    propertyName: _Progress

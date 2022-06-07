@@ -10,4 +10,11 @@ namespace Sakuya.UnityUIAnime
         public Vector3 from;
         public Vector3 to;
     }
+
+    [System.Serializable]
+    public class Vector4AnimeSettings : BaseAnimeSettings
+    {
+        public Vector4 from;
+        public Vector4 to;
+    }
 }

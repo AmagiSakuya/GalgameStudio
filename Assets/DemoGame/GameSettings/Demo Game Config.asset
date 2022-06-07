@@ -21,7 +21,7 @@ MonoBehaviour:
     font: {fileID: 11400000, guid: d628eb18654921f4cb46c427621a9ef2, type: 2}
     fonts:
     - {fileID: 11400000, guid: d628eb18654921f4cb46c427621a9ef2, type: 2}
-    textTypeWriterSpeed: 0.3
+    textTypeWriterSpeed: 0.6
     skipUnreadedText: 0
   soundSettings:
     overallVolume: 1

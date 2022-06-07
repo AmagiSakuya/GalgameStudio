@@ -11,14 +11,14 @@ namespace AdventureGame
     {
         public AdventureGameDrama enterDrama;
         [ReadOnly] public int currentIndex;
-        [Header("UIÒıÓÃ")]
-        [Tooltip("±³¾°Í¼Æ¬")] 
+        [Header("UIå¼•ç”¨")]
+        [Tooltip("èƒŒæ™¯å›¾ç‰‡")] 
         public Image backgroundImage;
-        [Tooltip("¶Ô»°¿ò±³¾°Í¼Æ¬")] 
+        [Tooltip("å¯¹è¯æ¡†èƒŒæ™¯å›¾ç‰‡")] 
         public Image dialogBackgroundImage;
-        [Tooltip("½ÇÉ«ÃûÎÄ±¾¿ò")] 
+        [Tooltip("è§’è‰²åæ–‡æœ¬æ¡†")] 
         public TMP_Text characterName;
-        [Tooltip("¶Ô»°ÎÄ±¾¿ò")] 
+        [Tooltip("å¯¹è¯æ–‡æœ¬æ¡†")] 
         public TMP_Text cotent;
 
         AudioSource m_voicePlayer;
@@ -51,11 +51,11 @@ namespace AdventureGame
         }
 
         /// <summary>
-        /// ²¥·Å¶Ô»°
+        /// æ’­æ”¾å¯¹è¯
         /// </summary>
         void PlayCompistion(AdventureGameDrama drama, int index)
         {
-            //¶Ô»°ÎÄ×Ö
+            //å¯¹è¯æ–‡å­—
             if (m_cotentUIAnime.IsPlaying())
             {
                 m_cotentUIAnime.Dispose();
@@ -68,7 +68,7 @@ namespace AdventureGame
             m_cotentUIAnime.animeDefine.typeWriterAnimeSettings.duration = m_textTypeSpeed * cotent.text.Length;
             m_cotentUIAnime.Play();
 
-            //ÓïÑÔ
+            //è¯­è¨€
             if (m_compisition.voice)
             {
                 m_voicePlayer.clip = m_compisition.voice;
@@ -82,7 +82,7 @@ namespace AdventureGame
                 m_bgmPlayer.Play();
             }
 
-            //±³¾°
+            //èƒŒæ™¯
             if (m_compisition.background)
             {
                 backgroundImage.color = Color.white;
@@ -90,7 +90,7 @@ namespace AdventureGame
             }
         }
 
-        #region Ó¦ÓÃÏµÍ³Éè¶¨
+        #region åº”ç”¨ç³»ç»Ÿè®¾å®š
         public void SetSoundSettings(ADVSoundSettings m_soundSettings)
         {
             AudioListener.volume = m_soundSettings.overallVolume;
@@ -105,15 +105,15 @@ namespace AdventureGame
         {
             characterName.font = m_textSettings.font;
             cotent.font = m_textSettings.font;
-            m_textTypeSpeed = Util.Remap(m_textSettings.textTypeWriterSpeed, 0.01f, 1f, 0.1f, 0.001f);
+            m_textTypeSpeed = Util.Remap(m_textSettings.textTypeWriterSpeed, 0.01f, 1f, 0.05f, 0.001f);
         }
         #endregion
 
         //public void SetDefine(GameDialogStyleDefine value, TMP_FontAsset font = null)
         //{
-        //    //ÉèÖÃ±³¾°Í¼Æ¬
+        //    //è®¾ç½®èƒŒæ™¯å›¾ç‰‡
         //    dialogBackgroundImage.sprite = value.backgroundImage;
-        //    //ÉèÖÃÎÄ±¾ÑÕÉ«
+        //    //è®¾ç½®æ–‡æœ¬é¢œè‰²
         //    SetADVTextSettings(characterName, value.charaNameTextSettings, font);
         //    SetADVTextSettings(cotent, value.contentTextSettings, font);
         //}
@@ -131,7 +131,7 @@ namespace AdventureGame
         //    m_text.fontSharedMaterial.SetFloat("_FaceDilate", settings.outLineWidth);
         //}
 
-        //ÏÂÒ»²½
+        //ä¸‹ä¸€æ­¥
         void OnADVControl_Next()
         {
             if (currentIndex + 1 <= enterDrama.compositions.Count - 1)
@@ -141,7 +141,7 @@ namespace AdventureGame
             }
         }
 
-        //ÉÏÒ»²½
+        //ä¸Šä¸€æ­¥
         void OnADVControl_Back()
         {
             if (currentIndex - 1 >= 0)
