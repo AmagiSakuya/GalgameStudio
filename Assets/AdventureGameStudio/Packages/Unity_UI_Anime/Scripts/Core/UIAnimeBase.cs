@@ -11,6 +11,8 @@ namespace Sakuya.UnityUIAnime
 
         [ReadOnly] public float time = 0;
 
+        public Action OnComplete;
+
         /// <summary>
         /// 从头播放
         /// </summary>
@@ -35,24 +37,34 @@ namespace Sakuya.UnityUIAnime
 
         protected void SetAnimeByTime<TSettings>(TSettings[] quene, Action<TSettings, float> PlayAnimeByTime, Action CompleteCallback = null) where TSettings : BaseAnimeSettings
         {
+            SetAnimeByTime(quene, (TSettings a, float b, float c) =>
+            {
+                PlayAnimeByTime(a, b);
+            }, CompleteCallback);
+        }
+
+        protected void SetAnimeByTime<TSettings>(TSettings[] quene, Action<TSettings, float, float> PlayAnimeByTime, Action CompleteCallback = null) where TSettings : BaseAnimeSettings
+        {
             bool isTimeInQuene = false;
+            float countTime = 0;
             for (int i = 0; i < quene.Length; i++)
             {
                 float m_thisQueneCostTime = quene[i].delay + quene[i].duration;
-                if (time <= m_thisQueneCostTime)
+                if (countTime <= time && time <= countTime + m_thisQueneCostTime)
                 {
-                    float m_time = time - quene[i].delay;
+                    float timeInthis = time - countTime;
+                    float m_time = timeInthis - quene[i].delay;
                     if (quene[i].timeDecimalPoint >= 0)
                     {
                         m_time = (float)Math.Round(m_time, quene[i].timeDecimalPoint);
                     }
-                    PlayAnimeByTime(quene[i], m_time);
+                    PlayAnimeByTime(quene[i], m_time, i);
                     isTimeInQuene = true;
                     break;
                 }
                 else
                 {
-                    PlayAnimeByTime(quene[i], m_thisQueneCostTime);
+                    countTime += m_thisQueneCostTime;
                 }
             }
 

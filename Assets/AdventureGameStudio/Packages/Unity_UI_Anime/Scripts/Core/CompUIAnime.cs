@@ -92,6 +92,7 @@ namespace Sakuya.UnityUIAnime
 
         protected void BaseLoopPlay()
         {
+
             if (loop)
             {
                 time = 0;

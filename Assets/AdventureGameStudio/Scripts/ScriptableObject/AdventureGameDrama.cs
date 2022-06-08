@@ -1,3 +1,5 @@
+using Sakuya.UnityUIAnime;
+using Sakuya.UnityUIAnime.Define;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,18 +26,23 @@ namespace AdventureGame
         public AudioClip voice;
         public AudioClip bgm;
         //背景
-        public Sprite background;
+        //public ADV_BackgroundImageTransition backgroundAnime;
+        public Sprite backgroundImage;
         public Texture backgroundRuleImage;
-        public float backgroundFadeDuration = -1.0f;
-        public ADV_ImageTransition[] layerAnimes;
+        public float backgroundFadeDuration = 0.8f;
+        //public AnimeQueueDefine bgAnimeDefine;
 
         //图层演出
+        public ADV_PerformImageTransition[] layerAnimes;
         public UnityEvent OnEnter;
         public UnityEvent OnExit;
         public ADV_Drama_Composition_Branch[] branchs;
     }
 
-    public enum ADV_ImageTransitionLayer
+    /// <summary>
+    /// 演出用图层
+    /// </summary>
+    public enum ADV_PerformImageTransitionLayer
     {
         Layer1,
         Layer2,
@@ -46,7 +53,16 @@ namespace AdventureGame
         Layer7,
         Layer8,
         Layer9,
-        Layer10
+        Background
+    }
+
+    /// <summary>
+    /// 演出类型
+    /// </summary>
+    public enum ADV_LayerTransitionType
+    {
+        ReplaceExisting,
+        UseExisting
     }
 
     public enum ADV_ImageTransitionPos
@@ -68,19 +84,22 @@ namespace AdventureGame
     [System.Serializable]
     public class ADV_TransitionBase
     {
+        public ADV_LayerTransitionType type;
         public Sprite image;
         public Texture ruleImage;
-        public float duration = -1.0f;
     }
 
     [System.Serializable]
-    public class ADV_ImageTransition : ADV_TransitionBase
+    public class ADV_PerformImageTransition : ADV_TransitionBase
     {
-        public ADV_ImageTransitionLayer layer;
-        public ADV_ImageTransitionPos pos;
-        public Vector2 posOffset;
-        public ADV_ImageTransitionScale scale;
-        public Vector2 scaleOffset;
+        public ADV_PerformImageTransitionLayer layer;
+        public AnimeQueueSettings animeSettings;
+    }
+
+    [System.Serializable]
+    public class ADV_BackgroundImageTransition : ADV_TransitionBase
+    {
+        public AnimeQueueSettings[] anime;
     }
 
     [System.Serializable]

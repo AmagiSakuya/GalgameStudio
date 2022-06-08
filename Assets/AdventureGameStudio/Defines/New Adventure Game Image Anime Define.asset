@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9221d213baa2e743951d5d99c58eb52, type: 3}
-  m_Name: Layer1_Shader_UIAnime_Define
+  m_Script: {fileID: 11500000, guid: 0fca7eafbf19891429b91ddb22352a20, type: 3}
+  m_Name: New Adventure Game Image Anime Define
   m_EditorClassIdentifier: 
-  floatAnimes:
+  animeQueue:
   - duration: 1
-    delay: 0
+    delay: 0.2
     curve:
       serializedVersion: 2
       m_Curve:
@@ -38,8 +38,10 @@ MonoBehaviour:
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
+      m_RotationOrder: 0
     timeDecimalPoint: -1
-    from: 0
-    to: 100
-    propertyName: _Progress
+    from: {x: 0, y: 0, z: 0, w: 0}
+    to: {x: 100, y: 0, z: 0, w: 0}
+    propertyName: 
+    animeType: 0
+    relative: 1

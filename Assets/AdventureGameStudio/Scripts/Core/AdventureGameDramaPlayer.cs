@@ -93,22 +93,20 @@ namespace AdventureGame
 
             #region 背景
             //背景
-            if (m_compisition.background)
-            {
-                backgroundImageFader.DoImageFadeAnime(m_compisition.background, m_compisition.backgroundFadeDuration, m_compisition.backgroundRuleImage);
-            }
+            backgroundImageFader.DoBackgroundAnime(m_compisition);
+
             #endregion
 
             #region 图层演出
             for (int i = 0; i < m_compisition.layerAnimes.Length; i++)
             {
-                ADV_ImageTransition layerAnime = m_compisition.layerAnimes[i];
-                if (layerAnime.layer == ADV_ImageTransitionLayer.Layer1)
-                {
-                    Layer1ImageFader.PrepareImage(layerAnime.image, layerAnime.duration, layerAnime.ruleImage, true);
-                    //CalcImageRectTrans(layerAnime, Layer1ImageFader.m_imagePool[1].GetComponent<Image>());
-                    Layer1ImageFader.m_imagePool[1].Play();
-                }
+                //ADV_ImageTransition layerAnime = m_compisition.layerAnimes[i];
+                //if (layerAnime.layer == ADV_ImageTransitionLayer.Layer1)
+                //{
+                //    Layer1ImageFader.PrepareImage(layerAnime.image, layerAnime.duration, layerAnime.ruleImage, true);
+                //    //CalcImageRectTrans(layerAnime, Layer1ImageFader.m_imagePool[1].GetComponent<Image>());
+                //    Layer1ImageFader.m_imagePool[1].Play();
+                //}
             }
 
             #endregion
@@ -126,7 +124,7 @@ namespace AdventureGame
         #endregion
 
         #region 图层演出
-        void CalcImageRectTrans(ADV_ImageTransition settings, Image image)
+        void CalcImageRectTrans(ADV_PerformImageTransition settings, Image image)
         {
 
         }

@@ -35,12 +35,12 @@
                         <uie:PropertyField binding-path="m_selectedCompistion.bgm" label="背景音" name="BGM" />
                     </ui:GroupBox>
                     <ui:GroupBox name="BackgroundBox" class="group_box">
-                        <uie:PropertyField binding-path="m_selectedCompistion.background" label="背景图片" name="BackgroundImage" />
-                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundRuleImage" label="背景动画RuleImage" name="BackgroundRuleImage" />
-                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundFadeDuration" label="背景动画时间" name="BackgroundFadeDuration" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundImage" name="BackgroundImage" label="背景图片" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundRuleImage" name="BackgroundRuleImage" label="背景图片规则" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundFadeDuration" name="BackgroundFadeDuration" label="切换时间" />
                     </ui:GroupBox>
                     <ui:GroupBox name="LayeAnimeBox" class="group_box">
-                        <ui:Foldout text="图层动画">
+                        <ui:Foldout text="图层动画" value="false">
                             <ui:ListView focusable="true" binding-path="m_selectedCompistion.layerAnimes" virtualization-method="DynamicHeight" show-border="false" show-add-remove-footer="true" reorderable="true" show-bound-collection-size="false" reorder-mode="Animated" />
                         </ui:Foldout>
                     </ui:GroupBox>

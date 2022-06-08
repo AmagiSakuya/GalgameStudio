@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1671150715949024043}
   - component: {fileID: 5824712899680386210}
   - component: {fileID: 1679481774260469599}
-  - component: {fileID: -996006693071250030}
+  - component: {fileID: 1921640577}
   m_Layer: 5
   m_Name: BackgroundImagePrefab
   m_TagString: Untagged
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ba720bb20f2bb04e8f2e54e780f8983, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd6397054960fb74f86d1b2156362130, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-996006693071250030
+--- !u!114 &1921640577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2397300304264623898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656447cfd166aa44fbab9847db1235e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 25d2f3f7daa7a424eb80a6593cbb2c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pause: 0
@@ -94,4 +94,4 @@ MonoBehaviour:
   m_target: {fileID: 1679481774260469599}
   m_playOnEnable: 0
   loop: 0
-  m_animeDefine: {fileID: 11400000, guid: a19c5dd16f9c8a142839b201dbdc511b, type: 2}
+  m_animeDefine: {fileID: 0}
