@@ -40,7 +40,7 @@
                         <uie:PropertyField binding-path="m_selectedCompistion.backgroundFadeDuration" name="BackgroundFadeDuration" label="切换时间" />
                     </ui:GroupBox>
                     <ui:GroupBox name="LayeAnimeBox" class="group_box">
-                        <ui:Foldout text="图层动画" value="false">
+                        <ui:Foldout text="图层动画" value="true">
                             <ui:ListView focusable="true" binding-path="m_selectedCompistion.layerAnimes" virtualization-method="DynamicHeight" show-border="false" show-add-remove-footer="true" reorderable="true" show-bound-collection-size="false" reorder-mode="Animated" />
                         </ui:Foldout>
                     </ui:GroupBox>

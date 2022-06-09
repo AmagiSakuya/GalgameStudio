@@ -26,11 +26,9 @@ namespace AdventureGame
         public AudioClip voice;
         public AudioClip bgm;
         //背景
-        //public ADV_BackgroundImageTransition backgroundAnime;
         public Sprite backgroundImage;
         public Texture backgroundRuleImage;
         public float backgroundFadeDuration = 0.8f;
-        //public AnimeQueueDefine bgAnimeDefine;
 
         //图层演出
         public ADV_PerformImageTransition[] layerAnimes;
@@ -65,41 +63,15 @@ namespace AdventureGame
         UseExisting
     }
 
-    public enum ADV_ImageTransitionPos
-    {
-        Center,
-        Left,
-        Right
-    }
-
-    public enum ADV_ImageTransitionScale
-    {
-        Normal,
-        VeryFar,
-        Far,
-        Near,
-        VeryNear
-    }
-
     [System.Serializable]
-    public class ADV_TransitionBase
+    public class ADV_PerformImageTransition
     {
         public ADV_LayerTransitionType type;
+        public ADV_PerformImageTransitionLayer layer;
         public Sprite image;
         public Texture ruleImage;
-    }
-
-    [System.Serializable]
-    public class ADV_PerformImageTransition : ADV_TransitionBase
-    {
-        public ADV_PerformImageTransitionLayer layer;
-        public AnimeQueueSettings animeSettings;
-    }
-
-    [System.Serializable]
-    public class ADV_BackgroundImageTransition : ADV_TransitionBase
-    {
-        public AnimeQueueSettings[] anime;
+        public AdventureLayerAnimeInitDefine initDefine;
+        public float initDuration = 0.8f;
     }
 
     [System.Serializable]

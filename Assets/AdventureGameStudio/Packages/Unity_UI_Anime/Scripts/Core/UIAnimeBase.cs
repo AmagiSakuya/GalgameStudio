@@ -45,6 +45,7 @@ namespace Sakuya.UnityUIAnime
 
         protected void SetAnimeByTime<TSettings>(TSettings[] quene, Action<TSettings, float, float> PlayAnimeByTime, Action CompleteCallback = null) where TSettings : BaseAnimeSettings
         {
+            if (quene == null) return;
             bool isTimeInQuene = false;
             float countTime = 0;
             for (int i = 0; i < quene.Length; i++)

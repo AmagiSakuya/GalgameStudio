@@ -18,7 +18,7 @@ namespace Sakuya.UnityUIAnimeEditor
 
         private void OnDisable()
         {
-            if (!Application.isPlaying)
+            if (!Application.isPlaying && t != null)
             {
                 t.Dispose();
             }
@@ -41,7 +41,7 @@ namespace Sakuya.UnityUIAnimeEditor
             GUILayout.BeginHorizontal();
             Color m_defaultColor = GUI.color;
             GUI.color = Color.green;
-            if ( GUILayout.Button("Play"))
+            if (GUILayout.Button("Play"))
             {
                 t.Play();
             }

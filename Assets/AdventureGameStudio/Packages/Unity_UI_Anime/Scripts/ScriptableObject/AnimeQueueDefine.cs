@@ -8,6 +8,7 @@ namespace Sakuya.UnityUIAnime.Define
     public class AnimeQueueDefine : ScriptableObject
     {
         [Header("动画队列")]
-        public AnimeQueueSettings[] animeQueue;
+        [HideInInspector] public AnimeQueueSettings[] animeFadeQueue; // Fade Use 系统保留 不开放
+        public AnimeQueueSettings[] animeQueue; // Layer Use
     }
 }

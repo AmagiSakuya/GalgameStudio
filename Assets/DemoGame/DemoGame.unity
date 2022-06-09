@@ -466,9 +466,9 @@ GameObject:
   m_Component:
   - component: {fileID: 955763949}
   - component: {fileID: 955763951}
-  - component: {fileID: 955763952}
+  - component: {fileID: 955763953}
   m_Layer: 5
-  m_Name: "\u80CC\u666F\u56FE\u7247\u533A"
+  m_Name: "\u80CC\u666F\u5C42"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,7 +502,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955763948}
   m_CullTransparentMesh: 1
---- !u!114 &955763952
+--- !u!114 &955763953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -511,12 +511,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 955763948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb05293e3ecc37459280ab56a8d04e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 27e1c63a7c7155f42ac7653703b5053f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   imagePrefab: {fileID: 2397300304264623898, guid: b8a69352c0737e847bfd7fa378b0e4d8,
     type: 3}
-  m_imagePool: []
+  m_ADVImageShaderName: Hidden/ADVGame/Image
 --- !u!1 &974516376
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,8 +689,8 @@ MonoBehaviour:
   dialogBackgroundImage: {fileID: 2050336096}
   characterName: {fileID: 1479348364}
   cotent: {fileID: 2011336861}
-  backgroundImageFader: {fileID: 955763952}
-  Layer1ImageFader: {fileID: 1981995189}
+  backgroundLayer: {fileID: 955763953}
+  layer1: {fileID: 1981995191}
 --- !u!114 &1072538372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,7 +1282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789452313}
   m_Layer: 5
-  m_Name: "\u56FE\u5C42\u6F14\u51FA\u533A\u57DF"
+  m_Name: "\u6F14\u51FA\u5C42"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1319,7 +1319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1981995188}
   - component: {fileID: 1981995190}
-  - component: {fileID: 1981995189}
+  - component: {fileID: 1981995191}
   m_Layer: 5
   m_Name: Layer1
   m_TagString: Untagged
@@ -1347,21 +1347,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1981995189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981995187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb05293e3ecc37459280ab56a8d04e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 3546163821867202294, guid: 09f46d23b91bd424c956fe0d5c9a5b04,
-    type: 3}
-  m_imagePool: []
 --- !u!222 &1981995190
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1370,6 +1355,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981995187}
   m_CullTransparentMesh: 1
+--- !u!114 &1981995191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981995187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e1c63a7c7155f42ac7653703b5053f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imagePrefab: {fileID: 3546163821867202294, guid: 09f46d23b91bd424c956fe0d5c9a5b04,
+    type: 3}
+  m_ADVImageShaderName: Hidden/ADVGame/Image
 --- !u!1 &2011336859
 GameObject:
   m_ObjectHideFlags: 0

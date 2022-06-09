@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 namespace AdventureGame
 {
@@ -21,9 +22,8 @@ namespace AdventureGame
         public TMP_Text cotent;
 
         [Header("模块引用")]
-        [Tooltip("背景图片")]
-        public AdventureGameImageFader backgroundImageFader;
-        public AdventureGameImageFader Layer1ImageFader;
+        public AdventureGameImageLayer backgroundLayer;
+        public AdventureGameImageLayer layer1;
 
         AudioSource m_voicePlayer;
         AudioSource m_bgmPlayer;
@@ -93,21 +93,16 @@ namespace AdventureGame
 
             #region 背景
             //背景
-            backgroundImageFader.DoBackgroundAnime(m_compisition);
+            backgroundLayer.DoBackgroundAnime(m_compisition);
 
             #endregion
 
             #region 图层演出
-            for (int i = 0; i < m_compisition.layerAnimes.Length; i++)
+            if (m_compisition.layerAnimes.Length > 0)
             {
-                //ADV_ImageTransition layerAnime = m_compisition.layerAnimes[i];
-                //if (layerAnime.layer == ADV_ImageTransitionLayer.Layer1)
-                //{
-                //    Layer1ImageFader.PrepareImage(layerAnime.image, layerAnime.duration, layerAnime.ruleImage, true);
-                //    //CalcImageRectTrans(layerAnime, Layer1ImageFader.m_imagePool[1].GetComponent<Image>());
-                //    Layer1ImageFader.m_imagePool[1].Play();
-                //}
+                //Play_LayerAnime(m_compisition.layerAnimes[0]);
             }
+
 
             #endregion
 
@@ -123,10 +118,13 @@ namespace AdventureGame
 
         #endregion
 
-        #region 图层演出
-        void CalcImageRectTrans(ADV_PerformImageTransition settings, Image image)
+        #region 图层演出 //图层并列执行 Layer是队列动画
+        void InitLayerImage(ADV_PerformImageTransition settings, Action Callback = null)
         {
-
+            if (settings.layer == ADV_PerformImageTransitionLayer.Layer1)
+            {
+                //InitLayerImage
+            }
         }
         #endregion
 

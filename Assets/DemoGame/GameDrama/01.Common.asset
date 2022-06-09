@@ -19,30 +19,14 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: b95a6a21d52ce9044858c25736438bf9, type: 3}
     bgm: {fileID: 8300000, guid: 7483754d6d031454288e460f1ef087be, type: 3}
     backgroundImage: {fileID: 21300000, guid: 3ce36248dcc580246bd9e3e17580005d, type: 3}
-    backgroundRuleImage: {fileID: 2800000, guid: feac70cc619dc7f4d9390e5cab80284d,
-      type: 3}
+    backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes:
     - type: 0
-      image: {fileID: 0}
-      ruleImage: {fileID: 0}
       layer: 0
-      animeSettings:
-        duration: 0
-        delay: 0
-        curve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 0
-          m_PostInfinity: 0
-          m_RotationOrder: 4
-        timeDecimalPoint: 0
-        from: {x: 0, y: 0, z: 0, w: 0}
-        to: {x: 0, y: 0, z: 0, w: 0}
-        propertyName: 
-        animeType: 0
-        relative: 0
+      image: {fileID: 21300000, guid: 8c8cbf7298950744091dccf8e763b14b, type: 3}
+      ruleImage: {fileID: 0}
+      initDefine: {fileID: 11400000, guid: caf7471e98ce5424680ceb19eb337bba, type: 2}
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -55,10 +39,9 @@ MonoBehaviour:
     voice: {fileID: 0}
     bgm: {fileID: 0}
     backgroundImage: {fileID: 21300000, guid: ce133b26e5a337c4ca0188cca3435b7b, type: 3}
-    backgroundRuleImage: {fileID: 2800000, guid: 031830477a05168449a5c34999ee0cb5,
+    backgroundRuleImage: {fileID: 2800000, guid: feac70cc619dc7f4d9390e5cab80284d,
       type: 3}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -74,7 +57,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -90,7 +72,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -106,7 +87,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -122,7 +102,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -138,7 +117,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -154,7 +132,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -170,7 +147,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -186,7 +162,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -202,7 +177,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -218,7 +192,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -234,7 +207,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -250,7 +222,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -266,7 +237,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -282,7 +252,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -298,7 +267,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -314,7 +282,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -330,7 +297,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -346,7 +312,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -362,7 +327,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -378,7 +342,6 @@ MonoBehaviour:
     backgroundImage: {fileID: 0}
     backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
     layerAnimes: []
     OnEnter:
       m_PersistentCalls:
@@ -395,16 +358,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_selectedCompistion:
-    characterName: "\u66C9"
-    content: "\u5B66\u751F\u3058\u3083\u306A\u3044\u3093\u3067\u3059\u304B\uFF1F"
-    voice: {fileID: 0}
-    bgm: {fileID: 0}
-    backgroundImage: {fileID: 21300000, guid: ce133b26e5a337c4ca0188cca3435b7b, type: 3}
-    backgroundRuleImage: {fileID: 2800000, guid: 031830477a05168449a5c34999ee0cb5,
-      type: 3}
+    characterName: "\u7FBD\u6708"
+    content: "\u5BEE\u306E\u7BA1\u7406\u3092\u884C\u3063\u3066\u3044\u308B\u306E\u306F\u30EF\u30BF\u30B7\u3060"
+    voice: {fileID: 8300000, guid: b95a6a21d52ce9044858c25736438bf9, type: 3}
+    bgm: {fileID: 8300000, guid: 7483754d6d031454288e460f1ef087be, type: 3}
+    backgroundImage: {fileID: 21300000, guid: 3ce36248dcc580246bd9e3e17580005d, type: 3}
+    backgroundRuleImage: {fileID: 0}
     backgroundFadeDuration: 0.8
-    bgAnimeDefine: {fileID: 0}
-    layerAnimes: []
+    layerAnimes:
+    - type: 0
+      layer: 0
+      image: {fileID: 21300000, guid: 8c8cbf7298950744091dccf8e763b14b, type: 3}
+      ruleImage: {fileID: 0}
+      initDefine: {fileID: 11400000, guid: caf7471e98ce5424680ceb19eb337bba, type: 2}
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
