@@ -60,6 +60,17 @@ namespace Sakuya.UnityUIAnime
             base.Play();
         }
 
+        public void Release()
+        {
+            //RectTransform m_rect = target.GetComponent<RectTransform>();
+            recordedPos = false;
+            recordedPos = false;
+            recordedScale = false;
+            m_originFloatValue = new Dictionary<string, float>();
+            m_originPool = new Dictionary<string, Vector3>();
+            base.Dispose();
+        }
+
         public override void Dispose()
         {
             RectTransform m_rect = target.GetComponent<RectTransform>();
@@ -89,7 +100,7 @@ namespace Sakuya.UnityUIAnime
 
         protected override void PlayAnimeByTime()
         {
-            SetAnimeByTime(animeDefine.animeFadeQueue, DoFadeQueue, () => { OnFadeComplete?.Invoke(); });
+            SetAnimeByTime(animeDefine.animeFadeQueue, DoFadeQueue, () => { OnFadeComplete?.Invoke(); Pause(); });
 
             SetAnimeByTime(animeDefine.animeQueue, DoLayerAnimeQuene, () =>
             {

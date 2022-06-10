@@ -50,8 +50,7 @@ namespace AdventureGame
         Layer6,
         Layer7,
         Layer8,
-        Layer9,
-        Background
+        Layer9
     }
 
     /// <summary>
@@ -72,6 +71,7 @@ namespace AdventureGame
         public Texture ruleImage;
         public AdventureLayerAnimeInitDefine initDefine;
         public float initDuration = 0.8f;
+        public float initDelay = 0.0f;
     }
 
     [System.Serializable]

@@ -27,7 +27,8 @@ MonoBehaviour:
       image: {fileID: 21300000, guid: 8c8cbf7298950744091dccf8e763b14b, type: 3}
       ruleImage: {fileID: 0}
       initDefine: {fileID: 11400000, guid: caf7471e98ce5424680ceb19eb337bba, type: 2}
-      initDuration: 0.8
+      initDuration: 0.4
+      initDelay: 0
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -43,7 +44,14 @@ MonoBehaviour:
     backgroundRuleImage: {fileID: 2800000, guid: feac70cc619dc7f4d9390e5cab80284d,
       type: 3}
     backgroundFadeDuration: 0.8
-    layerAnimes: []
+    layerAnimes:
+    - type: 0
+      layer: 0
+      image: {fileID: 21300000, guid: 8c8cbf7298950744091dccf8e763b14b, type: 3}
+      ruleImage: {fileID: 0}
+      initDefine: {fileID: 11400000, guid: ef8baac44df45ea4e8aadb82eff18935, type: 2}
+      initDuration: 0.4
+      initDelay: 0.5
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -372,7 +380,8 @@ MonoBehaviour:
       image: {fileID: 21300000, guid: 8c8cbf7298950744091dccf8e763b14b, type: 3}
       ruleImage: {fileID: 0}
       initDefine: {fileID: 11400000, guid: caf7471e98ce5424680ceb19eb337bba, type: 2}
-      initDuration: 0.8
+      initDuration: 0.4
+      initDelay: 0
     OnEnter:
       m_PersistentCalls:
         m_Calls: []

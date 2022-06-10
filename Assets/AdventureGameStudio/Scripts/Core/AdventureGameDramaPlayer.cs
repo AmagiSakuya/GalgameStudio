@@ -24,6 +24,14 @@ namespace AdventureGame
         [Header("模块引用")]
         public AdventureGameImageLayer backgroundLayer;
         public AdventureGameImageLayer layer1;
+        public AdventureGameImageLayer layer2;
+        public AdventureGameImageLayer layer3;
+        public AdventureGameImageLayer layer4;
+        public AdventureGameImageLayer layer5;
+        public AdventureGameImageLayer layer6;
+        public AdventureGameImageLayer layer7;
+        public AdventureGameImageLayer layer8;
+        public AdventureGameImageLayer layer9;
 
         AudioSource m_voicePlayer;
         AudioSource m_bgmPlayer;
@@ -91,38 +99,47 @@ namespace AdventureGame
             }
             #endregion
 
-            #region 背景
             //背景
             backgroundLayer.DoBackgroundAnime(m_compisition);
-
-            #endregion
-
-            #region 顺序图层演出
-            if (m_compisition.layerAnimes.Length > 0)
-            {
-                layer1.PlayLayer(m_compisition.layerAnimes[0]);
-            }
-
-            #endregion
-
-            #region 头像演出
-
-            #endregion
-
-            #region 样式演出
-
-            #endregion
-
+            //顺序图层演出
+            PlayLayers(m_compisition.layerAnimes);
+            //头像演出
         }
 
         #endregion
 
         #region 图层演出 //图层并列执行 Layer是队列动画
-        void PlayLayer(ADV_PerformImageTransition settings, Action Callback = null)
+        void PlayLayers(ADV_PerformImageTransition[] settings)
         {
-            if (settings.layer == ADV_PerformImageTransitionLayer.Layer1)
+            Dictionary<ADV_PerformImageTransitionLayer, List<ADV_PerformImageTransition>> m_pool = new Dictionary<ADV_PerformImageTransitionLayer, List<ADV_PerformImageTransition>>();
+
+            for (int i = 0; i < settings.Length; i++)
             {
-                //InitLayerImage
+                if (!m_pool.ContainsKey(settings[i].layer))
+                {
+                    m_pool.Add(settings[i].layer, new List<ADV_PerformImageTransition>());
+                }
+                m_pool[settings[i].layer].Add(settings[i]);
+            }
+
+            PlayDictionaryLayer(m_pool, layer1, ADV_PerformImageTransitionLayer.Layer1);
+            PlayDictionaryLayer(m_pool, layer2, ADV_PerformImageTransitionLayer.Layer2);
+            PlayDictionaryLayer(m_pool, layer3, ADV_PerformImageTransitionLayer.Layer3);
+            PlayDictionaryLayer(m_pool, layer4, ADV_PerformImageTransitionLayer.Layer4);
+            PlayDictionaryLayer(m_pool, layer5, ADV_PerformImageTransitionLayer.Layer5);
+            PlayDictionaryLayer(m_pool, layer6, ADV_PerformImageTransitionLayer.Layer6);
+            PlayDictionaryLayer(m_pool, layer7, ADV_PerformImageTransitionLayer.Layer7);
+            PlayDictionaryLayer(m_pool, layer8, ADV_PerformImageTransitionLayer.Layer8);
+            PlayDictionaryLayer(m_pool, layer9, ADV_PerformImageTransitionLayer.Layer9);
+        }
+
+        public void PlayDictionaryLayer(Dictionary<ADV_PerformImageTransitionLayer, List<ADV_PerformImageTransition>> m_pool, AdventureGameImageLayer layer, ADV_PerformImageTransitionLayer layerEnum)
+        {
+            List<ADV_PerformImageTransition> result;
+
+            if (m_pool.TryGetValue(layerEnum, out result))
+            {
+                layer.PlayerLayers(result.ToArray());
             }
         }
         #endregion
