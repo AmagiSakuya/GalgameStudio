@@ -75,6 +75,7 @@ namespace AdventureGame
             if (m_cotentUIAnime.IsPlaying())
             {
                 m_cotentUIAnime.Dispose();
+                PlayLayersEnd();
                 return;
             }
             m_cotentUIAnime.Dispose();
@@ -109,6 +110,7 @@ namespace AdventureGame
         #endregion
 
         #region 图层演出 //图层并列执行 Layer是队列动画
+
         void PlayLayers(ADV_PerformImageTransition[] settings)
         {
             Dictionary<ADV_PerformImageTransitionLayer, List<ADV_PerformImageTransition>> m_pool = new Dictionary<ADV_PerformImageTransitionLayer, List<ADV_PerformImageTransition>>();
@@ -133,13 +135,19 @@ namespace AdventureGame
             PlayDictionaryLayer(m_pool, layer9, ADV_PerformImageTransitionLayer.Layer9);
         }
 
+        void PlayLayersEnd()
+        {
+            layer1.SetLayersAtEnd();
+            backgroundLayer.SetLayersAtEnd();
+        }
+
         public void PlayDictionaryLayer(Dictionary<ADV_PerformImageTransitionLayer, List<ADV_PerformImageTransition>> m_pool, AdventureGameImageLayer layer, ADV_PerformImageTransitionLayer layerEnum)
         {
             List<ADV_PerformImageTransition> result;
 
             if (m_pool.TryGetValue(layerEnum, out result))
             {
-                layer.PlayerLayers(result.ToArray());
+                layer.PlayLayers(result.ToArray());
             }
         }
         #endregion

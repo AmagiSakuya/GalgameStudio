@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190c4fd143614424c9d4d20c5fe1ead8, type: 3}
-  m_Name: "Text_UI Anime_Define_\u6253\u5370\u673A"
+  m_Script: {fileID: 11500000, guid: c0f245838daf778409a92f63e0d60f00, type: 3}
+  m_Name: "RectTransform_UIAnime_Define_\u4F4D\u79FB 1"
   m_EditorClassIdentifier: 
-  typeWriterAnimeSettings:
-    duration: 0.4
-    delay: 0.1
+  positionAnimeQueue:
+  - duration: 0.1
+    delay: 0
     curve:
       serializedVersion: 2
       m_Curve:
@@ -38,5 +38,12 @@ MonoBehaviour:
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
+      m_RotationOrder: 0
     timeDecimalPoint: -1
+    from: {x: 0, y: 0, z: 0}
+    to: {x: 10, y: 0, z: 0}
+  relativePos: 0
+  rotationAnimeQueue: []
+  relativeRotation: 0
+  scaleAnimeQueue: []
+  relativeScale: 0

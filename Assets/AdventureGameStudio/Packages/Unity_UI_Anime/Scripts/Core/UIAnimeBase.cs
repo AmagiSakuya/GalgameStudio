@@ -65,6 +65,11 @@ namespace Sakuya.UnityUIAnime
                 }
                 else
                 {
+                    if (time > countTime + m_thisQueneCostTime)
+                    {
+                        time = m_thisQueneCostTime;
+                        PlayAnimeByTime(quene[i], m_thisQueneCostTime - quene[i].delay, i);
+                    }
                     countTime += m_thisQueneCostTime;
                 }
             }

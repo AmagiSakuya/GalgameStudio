@@ -29,6 +29,13 @@ MonoBehaviour:
       initDefine: {fileID: 11400000, guid: caf7471e98ce5424680ceb19eb337bba, type: 2}
       initDuration: 0.4
       initDelay: 0
+    - type: 0
+      layer: 0
+      image: {fileID: 21300000, guid: 8c8cbf7298950744091dccf8e763b14b, type: 3}
+      ruleImage: {fileID: 0}
+      initDefine: {fileID: 11400000, guid: ef8baac44df45ea4e8aadb82eff18935, type: 2}
+      initDuration: 0.4
+      initDelay: 0.6
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -382,6 +389,13 @@ MonoBehaviour:
       initDefine: {fileID: 11400000, guid: caf7471e98ce5424680ceb19eb337bba, type: 2}
       initDuration: 0.4
       initDelay: 0
+    - type: 0
+      layer: 0
+      image: {fileID: 21300000, guid: 8c8cbf7298950744091dccf8e763b14b, type: 3}
+      ruleImage: {fileID: 0}
+      initDefine: {fileID: 11400000, guid: ef8baac44df45ea4e8aadb82eff18935, type: 2}
+      initDuration: 0.4
+      initDelay: 0.6
     OnEnter:
       m_PersistentCalls:
         m_Calls: []

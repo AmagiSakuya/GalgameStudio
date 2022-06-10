@@ -59,6 +59,12 @@ namespace Sakuya.UnityUIAnime
             Dispose();
         }
 
+        public virtual void Play(float startTime)
+        {  
+            Play();
+            time = startTime;
+        }
+
         public override void Play()
         {
             m_animeCoroutine = StartCoroutine(AnimeUpdater());

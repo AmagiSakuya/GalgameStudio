@@ -2,6 +2,7 @@ using Sakuya.UnityUIAnime.Define;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,7 @@ namespace Sakuya.UnityUIAnime
         Dictionary<string, Vector3> m_originPool = new Dictionary<string, Vector3>();
 
         public Action OnFadeComplete;
+
         public override void Play()
         {
             Dispose();
@@ -60,17 +62,6 @@ namespace Sakuya.UnityUIAnime
             base.Play();
         }
 
-        public void Release()
-        {
-            //RectTransform m_rect = target.GetComponent<RectTransform>();
-            recordedPos = false;
-            recordedPos = false;
-            recordedScale = false;
-            m_originFloatValue = new Dictionary<string, float>();
-            m_originPool = new Dictionary<string, Vector3>();
-            base.Dispose();
-        }
-
         public override void Dispose()
         {
             RectTransform m_rect = target.GetComponent<RectTransform>();
@@ -96,6 +87,39 @@ namespace Sakuya.UnityUIAnime
             m_originFloatValue = new Dictionary<string, float>();
             m_originPool = new Dictionary<string, Vector3>();
             base.Dispose();
+        }
+
+        public void Release()
+        {
+            recordedPos = false;
+            recordedPos = false;
+            recordedScale = false;
+            m_originFloatValue = new Dictionary<string, float>();
+            m_originPool = new Dictionary<string, Vector3>();
+            base.Dispose();
+        }
+
+        public void SetAnimeAtEnd()
+        {
+            pause = true;
+            float time1 = 0;
+            float time2 = 0;
+            for (int i = 0; i < animeDefine.animeFadeQueue.Length; i++)
+            {
+                time1 += animeDefine.animeFadeQueue[i].delay + animeDefine.animeFadeQueue[i].duration;
+            }
+
+            for (int i = 0; i < animeDefine.animeQueue.Length; i++)
+            {
+                time2 += animeDefine.animeQueue[i].delay + animeDefine.animeQueue[i].duration;
+            }
+            AnimeQueueSettings lastSettings = animeDefine.animeFadeQueue.Last();
+            if (lastSettings != null)
+                DoFadeQueue(lastSettings, lastSettings.delay + lastSettings.duration);
+
+            AnimeQueueSettings lastSettings2 = animeDefine.animeQueue.Last();
+            if (lastSettings2 != null)
+                DoLayerAnimeQuene(lastSettings2, lastSettings2.delay + lastSettings2.duration, 0);
         }
 
         protected override void PlayAnimeByTime()
@@ -151,7 +175,7 @@ namespace Sakuya.UnityUIAnime
             DoFadeQueue(animeSetting, m_time, index);
         }
 
-        void DoFadeQueue(AnimeQueueSettings animeSetting, float m_time, float index)
+        void DoFadeQueue(AnimeQueueSettings animeSetting, float m_time, float index = 0)
         {
             if (animeSetting.animeType == AnimeType.ShaderFloatProperty)
             {

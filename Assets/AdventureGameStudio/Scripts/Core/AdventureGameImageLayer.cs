@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Sakuya.UnityUIAnime.Define;
+using System.Linq;
 
 namespace AdventureGame
 {
@@ -11,7 +12,9 @@ namespace AdventureGame
     {
         public GameObject imagePrefab;
         [ReadOnly] [SerializeField] string m_ADVImageShaderName = "Hidden/ADVGame/Image";
+
         Queue<Image_Queue_UIAnime> m_imageQueue;
+        ADV_PerformImageTransition[] m_LayerAnimeSettings;
 
         private void Awake()
         {
@@ -24,9 +27,33 @@ namespace AdventureGame
         }
 
 
-        public void PlayerLayers(ADV_PerformImageTransition[] settings)
+        public void SetLayersAtEnd()
         {
+            if (m_LayerAnimeSettings == null || m_LayerAnimeSettings.Length <= 0) return;
+            //记录最后一条动画 用于跳过使用
+            //播放
+            ADV_PerformImageTransition settings = m_LayerAnimeSettings.Last();
+            PlayLayer(settings, null, settings.initDelay + settings.initDuration);
+            ClearQueue();
+        }
+
+        public void ClearQueue()
+        {
+            if (m_imageQueue.Count > 1)
+            {
+                Image_Queue_UIAnime m_exist = m_imageQueue.Peek();
+                m_imageQueue.Dequeue();
+                Destroy(m_exist.gameObject);
+                ClearQueue();
+            }
+        }
+
+        public void PlayLayers(ADV_PerformImageTransition[] settings)
+        {
+            m_LayerAnimeSettings = settings;
             if (settings.Length <= 0) return;
+            //记录最后一条动画 用于跳过使用
+            //播放
             PlayLayer(settings, 0);
         }
 
@@ -49,7 +76,7 @@ namespace AdventureGame
         /// <summary>
         /// 图层演出
         /// </summary>
-        public void PlayLayer(ADV_PerformImageTransition settings, Action Callback = null)
+        public void PlayLayer(ADV_PerformImageTransition settings, Action Callback = null, float startTime = 0.0f)
         {
             Image_Queue_UIAnime m_exist = GetExist();
             if (settings.type == ADV_LayerTransitionType.ReplaceExisting)
@@ -69,8 +96,8 @@ namespace AdventureGame
                     m_newImage.target.GetComponent<RectTransform>().localScale = settings.initDefine.scale;
                 }
 
-                m_newImage.Play();
-                m_exist.Play();
+                m_newImage.Play(startTime);
+                m_exist.Play(startTime);
             }
             else if (settings.type == ADV_LayerTransitionType.UseExisting)
             {
@@ -83,8 +110,7 @@ namespace AdventureGame
                 m_exist.animeDefine = ScriptableObject.CreateInstance<AnimeQueueDefine>();
                 m_exist.animeDefine.animeQueue = CreatePositionAnimeQueue(m_exist.target.GetComponent<RectTransform>().localPosition, settings.initDefine.position, settings.initDuration, settings.initDelay);
                 m_exist.target.GetComponent<RectTransform>().localScale = settings.initDefine.scale;
-
-                m_exist.Play();
+                m_exist.Play(startTime);
             }
         }
 
