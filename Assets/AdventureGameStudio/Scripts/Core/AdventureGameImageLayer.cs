@@ -23,32 +23,33 @@ namespace AdventureGame
             m_imageQueue = new Queue<Image_Queue_UIAnime>();
         }
 
+        public void PlayLayer(ADV_PerformImageTransition settings, Action Callback = null)
+        {
+            if (settings.image == null) return;
+            Image_Queue_UIAnime m_exist = GetExist();
+
+            if (settings.type == ADV_LayerTransitionType.ReplaceExisting)
+            {
+                //如果是新建 Dofade操作
+                Image_Queue_UIAnime m_newImage = CreateAndSetFadeAnime(m_exist, settings.image, settings.ruleImage, settings.initDuration, 0.1f, Callback);
+                //设置新图层位置
+                m_newImage.target.SetNativeSize();
+                m_newImage.Play();
+                m_exist.Play();
+            }
+            else if (settings.type == ADV_LayerTransitionType.UseExisting)
+            {
+                //如果是使用当前图层 位移图层位置
+
+            }
+        }
+
         //对话背景演出
         public void DoBackgroundAnime(ADV_Drama_Composition compistion, Action Callback = null)
         {
-            //判断队列数量
-            if (m_imageQueue.Count == 0)
-            {
-                m_imageQueue.Enqueue(CreateImage());
-            }
             if (compistion.backgroundImage == null) return;
-            Image_Queue_UIAnime m_exist;
-            if (!m_imageQueue.TryPeek(out m_exist)) { return; }
-            Image_Queue_UIAnime m_newImage = CreateImage();
-            m_imageQueue.Enqueue(m_newImage);
-            //设置参数
-            SetRule(m_newImage, compistion.backgroundRuleImage);
-            SetImageSettings_Anime_Queue(m_newImage, compistion.backgroundImage, CreateFadeAnimeQueue(false, compistion.backgroundFadeDuration));
-            //fade退出原有
-            SetRule(m_exist, null);
-            SetImageSettings_FadeOut_Queue(m_exist, compistion.backgroundFadeDuration); ;
-
-            m_exist.OnFadeComplete += () =>
-            {
-                m_imageQueue.Dequeue();
-                Destroy(m_exist.gameObject);
-                Callback?.Invoke();
-            };
+            Image_Queue_UIAnime m_exist = GetExist();
+            Image_Queue_UIAnime m_newImage = CreateAndSetFadeAnime(m_exist, compistion.backgroundImage, compistion.backgroundRuleImage, compistion.backgroundFadeDuration, 0.1f, Callback);
             m_newImage.Play();
             m_exist.Play();
         }
@@ -56,6 +57,37 @@ namespace AdventureGame
         public Image_Queue_UIAnime Peek()
         {
             return m_imageQueue.Peek();
+        }
+
+        Image_Queue_UIAnime GetExist()
+        {
+            if (m_imageQueue.Count == 0)
+            {
+                m_imageQueue.Enqueue(CreateImage());
+            }
+            Image_Queue_UIAnime m_exist;
+            if (!m_imageQueue.TryPeek(out m_exist)) { return null; }
+            return m_exist;
+        }
+
+        Image_Queue_UIAnime CreateAndSetFadeAnime(Image_Queue_UIAnime m_exist, Sprite image, Texture ruleImage, float duration = 0.8f, float delay = 0.1f, Action Callback = null)
+        {
+            Image_Queue_UIAnime m_newImage = CreateImage();
+            m_imageQueue.Enqueue(m_newImage);
+            //设置参数
+            SetRule(m_newImage, ruleImage);
+            SetImageSettings_Anime_Queue(m_newImage, image, CreateFadeAnimeQueue(false, duration, delay));
+            //fade退出原有
+            SetRule(m_exist, null);
+            SetImageSettings_FadeOut_Queue(m_exist, duration);
+
+            m_exist.OnFadeComplete += () =>
+            {
+                m_imageQueue.Dequeue();
+                Destroy(m_exist.gameObject);
+                Callback?.Invoke();
+            };
+            return m_newImage;
         }
 
         /// <summary>
@@ -82,10 +114,10 @@ namespace AdventureGame
         /// <summary>
         /// 设置FadeOut 动画序列
         /// </summary>
-        void SetImageSettings_FadeOut_Queue(Image_Queue_UIAnime m_ImageUIAnime, float fadeDuration = 0.8f)
+        void SetImageSettings_FadeOut_Queue(Image_Queue_UIAnime m_ImageUIAnime, float fadeDuration = 0.8f, float delay = 0.1f)
         {
             m_ImageUIAnime.animeDefine = ScriptableObject.CreateInstance<AnimeQueueDefine>();
-            m_ImageUIAnime.animeDefine.animeFadeQueue = CreateFadeAnimeQueue(true, fadeDuration);
+            m_ImageUIAnime.animeDefine.animeFadeQueue = CreateFadeAnimeQueue(true, fadeDuration, delay);
         }
 
         /// <summary>
@@ -97,12 +129,12 @@ namespace AdventureGame
             m_ImageUIAnime.target.material.SetTexture("_RuleTex", ruleImage);
         }
 
-        AnimeQueueSettings[] CreateFadeAnimeQueue(bool isFadeOut = false, float duration = 0.8f)
+        AnimeQueueSettings[] CreateFadeAnimeQueue(bool isFadeOut = false, float duration = 0.8f, float delay = 0.1f)
         {
             AnimeQueueSettings[] m_queue = new AnimeQueueSettings[] { new AnimeQueueSettings() };
             m_queue[0].animeType = AnimeType.ShaderFloatProperty;
             m_queue[0].curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
-            m_queue[0].delay = 0.1f;
+            m_queue[0].delay = delay;
             m_queue[0].duration = duration;
             m_queue[0].from = isFadeOut ? Vector4.one : Vector4.zero;
             m_queue[0].to = isFadeOut ? Vector4.zero : Vector4.one;

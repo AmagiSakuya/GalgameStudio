@@ -97,12 +97,11 @@ namespace AdventureGame
 
             #endregion
 
-            #region 图层演出
+            #region 顺序图层演出
             if (m_compisition.layerAnimes.Length > 0)
             {
-                //Play_LayerAnime(m_compisition.layerAnimes[0]);
+                layer1.PlayLayer(m_compisition.layerAnimes[0]);
             }
-
 
             #endregion
 
@@ -119,7 +118,7 @@ namespace AdventureGame
         #endregion
 
         #region 图层演出 //图层并列执行 Layer是队列动画
-        void InitLayerImage(ADV_PerformImageTransition settings, Action Callback = null)
+        void PlayLayer(ADV_PerformImageTransition settings, Action Callback = null)
         {
             if (settings.layer == ADV_PerformImageTransitionLayer.Layer1)
             {

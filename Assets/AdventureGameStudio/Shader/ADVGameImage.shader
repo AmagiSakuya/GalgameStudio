@@ -58,8 +58,8 @@ Shader "Hidden/ADVGame/Image"
                 float alpha1 = smoothstep(minValue, maxValue, maskValue);
                 float alpha2 = 1.0 -  _Progress;
                 float alpha = _USE_RULE_TEX == 0 ? alpha2 : alpha1;
-                alpha = texColor.a < alpha ? texColor.a : alpha;
-                return float4(texColor.rgb, 1.0 - alpha);
+                alpha = lerp(0, texColor.a, 1.0 - alpha);
+                return float4(texColor.rgb , alpha);
             }
             ENDCG
         }
