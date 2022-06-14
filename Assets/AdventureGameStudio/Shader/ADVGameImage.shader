@@ -6,7 +6,7 @@ Shader "Hidden/ADVGame/Image"
         [Toggle] _USE_RULE_TEX("Use RuleTex",Float) = 0
         _RuleTex("RuleTex", 2D) = "black" {}
         _SoftRange("SoftRange",Range(0.0,1.0)) = 0.05
-        _Progress("Progress",Range(0.0,1.0)) = 0.0
+        _Progress("Progress",Range(0.0,1.0)) = 1.0
     }
     SubShader
     {

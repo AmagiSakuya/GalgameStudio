@@ -69,7 +69,7 @@ namespace AdventureGame
         public ADV_PerformImageTransitionLayer layer;
         public Sprite image;
         public Texture ruleImage;
-        public AdventureLayerAnimeInitDefine initDefine;
+        public AdventureGameActorInitDefine initDefine;
         public float initDuration = 0.8f;
         public float initDelay = 0.0f;
     }
