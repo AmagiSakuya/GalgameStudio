@@ -32,17 +32,9 @@
                         <ui:TextField picking-mode="Ignore" label="人物名" binding-path="m_selectedCompistion.characterName" name="charName" />
                         <ui:TextField picking-mode="Ignore" label="对话内容" binding-path="m_selectedCompistion.content" multiline="true" name="advcontent" />
                         <uie:PropertyField binding-path="m_selectedCompistion.voice" label="语音" name="Voice" />
+                        <uie:PropertyField binding-path="m_selectedCompistion.voiceDelay" label="语音延迟(秒)" name="VoiceDelay" />
                         <uie:PropertyField binding-path="m_selectedCompistion.bgm" label="背景音" name="BGM" />
-                    </ui:GroupBox>
-                    <ui:GroupBox name="BackgroundBox" class="group_box">
-                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundImage" name="BackgroundImage" label="背景图片" />
-                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundRuleImage" name="BackgroundRuleImage" label="背景图片规则" />
-                        <uie:PropertyField binding-path="m_selectedCompistion.backgroundFadeDuration" name="BackgroundFadeDuration" label="切换时间" />
-                    </ui:GroupBox>
-                    <ui:GroupBox name="LayeAnimeBox" class="group_box">
-                        <ui:Foldout text="图层动画" value="true">
-                            <ui:ListView focusable="true" binding-path="m_selectedCompistion.layerAnimes" virtualization-method="DynamicHeight" show-border="false" show-add-remove-footer="true" reorderable="true" show-bound-collection-size="false" reorder-mode="Animated" />
-                        </ui:Foldout>
+                        <uie:PropertyField binding-path="m_selectedCompistion.perform" label="演出" name="Perform" />
                     </ui:GroupBox>
                     <ui:GroupBox name="EventBox" class="group_box">
                         <uie:PropertyField binding-path="m_selectedCompistion.OnEnter" label="进入事件回调" />
