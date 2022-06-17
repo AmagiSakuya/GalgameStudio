@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 namespace AdventureGame
 {
-    [RequireComponent(typeof(Image))]
+    //[RequireComponent(typeof(Image))]
     public class AdventureGameActor : MonoBehaviour
     {
         string m_ADVImageShaderName = "Hidden/ADVGame/Image";
         bool lockProgress;
 
-        Image m_target;
+        [SerializeField] Image m_target;
         public Image target
         {
             get
             {
-                if (m_target == null) m_target = GetComponent<Image>();
+                if (m_target == null) m_target = gameObject.GetComponent<Image>();
+                if (m_target == null) m_target = gameObject.AddComponent<Image>();
                 if (!m_target.material.shader.name.Equals(m_ADVImageShaderName)) m_target.material = new Material(Shader.Find(m_ADVImageShaderName));
                 return m_target;
             }
@@ -94,12 +95,4 @@ namespace AdventureGame
         }
         #endregion
     }
-
-    //[System.Serializable]
-    //public class AdventureGameActorFace
-    //{
-    //    public string name;
-    //    public Sprite image;
-    //    public Vector3 offset;
-    //}
 }

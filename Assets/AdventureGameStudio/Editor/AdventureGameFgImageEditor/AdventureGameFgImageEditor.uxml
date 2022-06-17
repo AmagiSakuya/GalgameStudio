@@ -1,0 +1,34 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="Head" style="flex-direction: row; border-bottom-width: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); align-items: stretch; justify-content: flex-start; padding-bottom: 5px;">
+        <uie:ObjectField label="立绘设置" allow-scene-objects="false" name="ADVFgImageSelector" style="-unity-text-align: middle-left; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 5px; margin-right: 5px; margin-top: 3px; margin-bottom: 3px; flex-shrink: 0; flex-grow: 1;" />
+        <ui:Button text="刷新" display-tooltip-when-elided="true" name="Refrash" class="WindowContainer" style="width: 70px; height: initial; justify-content: flex-start; align-items: auto;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Body" style="flex-grow: 1; flex-direction: row; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+        <ui:VisualElement name="GroupListArea" class="padding_5" style="width: 25%; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+            <ui:VisualElement style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
+                <ui:Label text="Body列表" display-tooltip-when-elided="true" name="mainBodyTitle" style="font-size: 12px; -unity-font-style: bold;" />
+            </ui:VisualElement>
+            <ui:ListView focusable="true" binding-path="bodyGroup" show-border="true" show-foldout-header="false" virtualization-method="DynamicHeight" show-add-remove-footer="true" name="GroupList" show-bound-collection-size="false" style="flex-grow: 4;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="FaceListArea" class="padding_5" style="width: 25%; overflow: hidden; visibility: visible; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+            <ui:VisualElement style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
+                <ui:Label text="Face列表" display-tooltip-when-elided="true" name="compsitionLabel" style="flex-shrink: 0; flex-grow: 1; -unity-text-align: middle-left; -unity-font-style: bold;" />
+            </ui:VisualElement>
+            <ui:ListView focusable="true" show-border="true" show-foldout-header="false" virtualization-method="DynamicHeight" show-add-remove-footer="true" name="FaceList" show-bound-collection-size="false" binding-path="faceGroup" style="flex-grow: 4;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="MainBody" class="padding_5" style="width: 50%;">
+            <ui:VisualElement style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
+                <uie:Vector2Field label="画布" binding-path="boundingBoxSize" name="CanvasSize" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                <ui:DropdownField label="Body" index="-1" name="BodyDropDown" />
+                <ui:DropdownField label="Face" index="-1" name="FaceDropDown" />
+            </ui:VisualElement>
+            <ui:ScrollView name="MainBody" style="height: auto; width: auto; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; flex-grow: 1;">
+                <ui:VisualElement name="FgImageContainer" style="flex-shrink: 0; width: 0; height: 0; background-color: rgb(255, 255, 255); background-image: url(&apos;project://database/Assets/AdventureGameStudio/Editor/AdventureGameFgImageEditor/transparent%20layer.jpg?fileID=2800000&amp;guid=736ae9df5d8a4e64b84786fd56412b19&amp;type=3#transparent layer&apos;); -unity-background-scale-mode: scale-and-crop; position: absolute;">
+                    <ui:VisualElement name="BodyImage" style="width: 0; height: 0; transform-origin: left top; left: 0; top: 0; position: absolute;" />
+                    <ui:VisualElement name="FaceImage" style="width: 0; height: 0; transform-origin: left top; left: 0; top: 0; position: absolute;" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Label text="Label" display-tooltip-when-elided="true" />
+</ui:UXML>

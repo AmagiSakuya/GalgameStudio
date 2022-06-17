@@ -8,8 +8,8 @@ namespace Sakuya.UnityUIAnime
     public abstract class CompUIAnime<TComp, TSettings> : UIAnimeBase where TComp : Component where TSettings : ScriptableObject
     {
         [SerializeField] TComp m_target;
-        [SerializeField] protected bool m_playOnEnable;
-        [SerializeField] protected bool loop;
+        [SerializeField] public bool playOnEnable;
+        [SerializeField] public bool loop;
         [SerializeField] TSettings m_animeDefine;
 
         Coroutine m_animeCoroutine;
@@ -50,7 +50,7 @@ namespace Sakuya.UnityUIAnime
 
         private void OnEnable()
         {
-            if (!m_playOnEnable) return;
+            if (!playOnEnable) return;
             Play();
         }
 

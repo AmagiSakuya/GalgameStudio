@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7c4c0c47e970e42bac87c58b3780a1, type: 3}
+  m_Name: "\u7FBD\u6708 FgImage Define"
+  m_EditorClassIdentifier: 
+  boundingBoxSize: {x: 3750, y: 5313}
+  bodyGroup:
+  - bodyGroupName: a
+    bodys:
+    - imageName: "\u5236\u670D"
+      image: {fileID: 21300000, guid: 18f811b765081a9459686723d1ff8d57, type: 3}
+      offset: {x: 1297, y: 1492}
+    - imageName: "\u5236\u670D\u8155\u5DEE\u5206\u5098 "
+      image: {fileID: 21300000, guid: e58256687f427724aa20cb45dfe6efe2, type: 3}
+      offset: {x: 1297, y: 1492}
+    - imageName: "\u5236\u670D\u8155\u5DEE\u5206B "
+      image: {fileID: 21300000, guid: 1581afe9d4039374e8dce791bb68b8a8, type: 3}
+      offset: {x: 1297, y: 1492}
+    - imageName: "\u5236\u670D\u8155\u5DEE\u5206A"
+      image: {fileID: 21300000, guid: 42ae687931bce20409efa7c665f15a85, type: 3}
+      offset: {x: 1297, y: 1492}
+    - imageName: "\u79C1\u670D "
+      image: {fileID: 21300000, guid: cf34c7380cdf5c94e8ed5623fc6d00e6, type: 3}
+      offset: {x: 1469, y: 1511}
+    - imageName: "\u904B\u52D5\u7740\u8155\u5DEE\u5206B "
+      image: {fileID: 21300000, guid: 3985c5a95284f8542880cc76dfc8c435, type: 3}
+      offset: {x: 1505, y: 1350}
+  - bodyGroupName: b
+    bodys:
+    - imageName: "\u5236\u670Db"
+      image: {fileID: 21300000, guid: 5ca912199810cfd40923842b0ac56409, type: 3}
+      offset: {x: 1384, y: 1493}
+    - imageName: "\u79C1\u670Db"
+      image: {fileID: 21300000, guid: 1a6f558f84e02b14384688a912a4e951, type: 3}
+      offset: {x: 1563, y: 1512}
+  faceGroup:
+  - relativeBodyGroup: a
+    faces:
+    - imageName: "\u57FA\u672C\u8868\u60C5"
+      image: {fileID: 21300000, guid: ac6a3f8ff67c5c84189a54f767c17d42, type: 3}
+      offset: {x: 1861, y: 1778}
+    - imageName: "\u7B11\u9854\uFF11"
+      image: {fileID: 21300000, guid: 1c78da2f3f6adf54ea119528d5a2844c, type: 3}
+      offset: {x: 1874, y: 1781}
+    - imageName: "\u5446\u308C"
+      image: {fileID: 21300000, guid: a789eb389409e2c4f8460513651786a2, type: 3}
+      offset: {x: 1879, y: 1774}
+  - relativeBodyGroup: b
+    faces:
+    - imageName: "\u57FA\u672C\u8868\u60C5"
+      image: {fileID: 21300000, guid: 64dc849576e819d42a02729ab04256aa, type: 3}
+      offset: {x: 1735, y: 1790}
+    - imageName: "\u7B11\u9854"
+      image: {fileID: 21300000, guid: 0a15c0cfa05c0e54797c613cc831c919, type: 3}
+      offset: {x: 1742, y: 1792}

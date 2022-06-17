@@ -74,13 +74,13 @@ namespace AdventureGame
         void PlayCompistion(AdventureGameDrama drama, int index)
         {
             #region 基础
-            //对话文字播完
+            //播完对话文字
             if (m_cotentUIAnime.IsPlaying())
             {
                 m_cotentUIAnime.Dispose();
                 return;
             }
-            //演出播完
+            //播完演出
             if (director.playableAsset != null && director.time < director.playableAsset.duration)
             {
                 director.time = director.playableAsset.duration;
