@@ -62,3 +62,8 @@ MonoBehaviour:
     - imageName: "\u7B11\u9854"
       image: {fileID: 21300000, guid: 0a15c0cfa05c0e54797c613cc831c919, type: 3}
       offset: {x: 1742, y: 1792}
+  appendFace:
+  - imageName: 02
+    image: {fileID: 21300000, guid: 694042df5f45dd04bad487088593b9c8, type: 3}
+    offset: {x: 1882, y: 1861}
+    show: 0

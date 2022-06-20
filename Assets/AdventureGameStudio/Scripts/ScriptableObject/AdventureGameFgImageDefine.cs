@@ -12,6 +12,8 @@ namespace AdventureGame
         public AdventureGameFgImageBodyGroup[] bodyGroup;
         [NonReorderable]
         public AdventureGameFgImageFaceGroup[] faceGroup;
+        [NonReorderable]
+        public AdventureGameFgImageAppendFace[] appendFace;
     }
 
     [System.Serializable]
@@ -20,6 +22,12 @@ namespace AdventureGame
         public string imageName;
         public Sprite image;
         public Vector2 offset;
+    }
+
+    [System.Serializable]
+    public class AdventureGameFgImageAppendFace : AdventureGameFgImage
+    {
+        public bool show;
     }
 
     [System.Serializable]

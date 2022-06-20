@@ -43,9 +43,9 @@ namespace AdventureGameEditor
             fgImageContainer = rootVisualElement.Q<VisualElement>("FgImageContainer");
             bodyImage = rootVisualElement.Q<VisualElement>("BodyImage");
             faceImage = rootVisualElement.Q<VisualElement>("FaceImage");
-         
+
             InitEvent();
-            
+
 
         }
 
@@ -184,7 +184,7 @@ namespace AdventureGameEditor
         /// <summary>
         /// 绘制立绘预览
         /// </summary>
-
+        List<VisualElement> appendFace = new List<VisualElement>();
         void DrawFgImage()
         {
             if (m_advFgImageDefine == null)
@@ -196,8 +196,41 @@ namespace AdventureGameEditor
             fgImageContainer.style.height = m_advFgImageDefine.boundingBoxSize.y;
             //绘制身体
             DrawImage(GetBody(), bodyImage);
-            DrawImage(GetFace(), faceImage);
             //绘制face
+            DrawImage(GetFace(), faceImage);
+            //绘制AppendFace
+            DrawAppendFaces();
+        }
+
+        void DrawAppendFaces()
+        {
+            if (appendFace.Count != m_advFgImageDefine.appendFace.Length)
+            {
+                //刷新face数量
+                appendFace = new List<VisualElement>();
+                var m_container = rootVisualElement.Q<VisualElement>("FaceAppend");
+                m_container.Clear();
+                for (int i = 0; i < m_advFgImageDefine.appendFace.Length; i++)
+                {
+                    var element = new VisualElement();
+                    element.style.position = Position.Absolute;
+                    m_container.Add(element);
+                    appendFace.Add(element);
+                }
+            }
+            //刷新AppendFace图片和位置
+            for (int i = 0; i < m_advFgImageDefine.appendFace.Length; i++)
+            {
+                if (m_advFgImageDefine.appendFace[i].show)
+                {
+                    DrawImage(m_advFgImageDefine.appendFace[i], appendFace[i]);
+                }
+                else
+                {
+                    appendFace[i].style.width = 0;
+                    appendFace[i].style.height = 0;
+                }
+            }
         }
 
         void DrawImage(AdventureGameFgImage settings, VisualElement image)

@@ -1,0 +1,5 @@
+.fgimage_preview_image {
+	width : 0px;
+	height : 0px;
+	position : absloute;
+}

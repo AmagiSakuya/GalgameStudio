@@ -5,10 +5,18 @@
     </ui:VisualElement>
     <ui:VisualElement name="Body" style="flex-grow: 1; flex-direction: row; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
         <ui:VisualElement name="GroupListArea" class="padding_5" style="width: 25%; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-            <ui:VisualElement style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
-                <ui:Label text="Body列表" display-tooltip-when-elided="true" name="mainBodyTitle" style="font-size: 12px; -unity-font-style: bold;" />
+            <ui:VisualElement name="ListContainer" style="height: 50%;">
+                <ui:VisualElement style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
+                    <ui:Label text="Body列表" display-tooltip-when-elided="true" name="mainBodyTitle" style="font-size: 12px; -unity-font-style: bold;" />
+                </ui:VisualElement>
+                <ui:ListView focusable="true" binding-path="bodyGroup" show-border="true" show-foldout-header="false" virtualization-method="DynamicHeight" show-add-remove-footer="true" name="GroupList" show-bound-collection-size="false" style="flex-grow: 4;" />
             </ui:VisualElement>
-            <ui:ListView focusable="true" binding-path="bodyGroup" show-border="true" show-foldout-header="false" virtualization-method="DynamicHeight" show-add-remove-footer="true" name="GroupList" show-bound-collection-size="false" style="flex-grow: 4;" />
+            <ui:VisualElement name="ListContainer" style="height: 50%;">
+                <ui:VisualElement style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
+                    <ui:Label text="ApendFace列表" display-tooltip-when-elided="true" name="apendFaceTitle" style="font-size: 12px; -unity-font-style: bold;" />
+                </ui:VisualElement>
+                <ui:ListView focusable="true" binding-path="appendFace" show-border="true" show-foldout-header="false" virtualization-method="DynamicHeight" show-add-remove-footer="true" name="GroupList" show-bound-collection-size="false" style="flex-grow: 4;" />
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="FaceListArea" class="padding_5" style="width: 25%; overflow: hidden; visibility: visible; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
             <ui:VisualElement style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
@@ -26,9 +34,9 @@
                 <ui:VisualElement name="FgImageContainer" style="flex-shrink: 0; width: 0; height: 0; background-color: rgb(255, 255, 255); background-image: url(&apos;project://database/Assets/AdventureGameStudio/Editor/AdventureGameFgImageEditor/transparent%20layer.jpg?fileID=2800000&amp;guid=736ae9df5d8a4e64b84786fd56412b19&amp;type=3#transparent layer&apos;); -unity-background-scale-mode: scale-and-crop; position: absolute;">
                     <ui:VisualElement name="BodyImage" style="width: 0; height: 0; transform-origin: left top; left: 0; top: 0; position: absolute;" />
                     <ui:VisualElement name="FaceImage" style="width: 0; height: 0; transform-origin: left top; left: 0; top: 0; position: absolute;" />
+                    <ui:VisualElement name="FaceAppend" style="width: 0; height: 0; transform-origin: left top; left: 0; top: 0; position: absolute;" />
                 </ui:VisualElement>
             </ui:ScrollView>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Label text="Label" display-tooltip-when-elided="true" />
 </ui:UXML>
