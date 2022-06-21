@@ -18,6 +18,7 @@ namespace AdventureGameEditor
         VisualElement fgImageContainer;
         VisualElement bodyImage;
         VisualElement faceImage;
+        ScrollView previewScroll;
 
         [MenuItem("ADV Studio/立绘编辑器")]
         public static void ShowWindow()
@@ -43,7 +44,7 @@ namespace AdventureGameEditor
             fgImageContainer = rootVisualElement.Q<VisualElement>("FgImageContainer");
             bodyImage = rootVisualElement.Q<VisualElement>("BodyImage");
             faceImage = rootVisualElement.Q<VisualElement>("FaceImage");
-
+            previewScroll = rootVisualElement.Q<ScrollView>("MainBody");
             InitEvent();
 
 
@@ -70,6 +71,7 @@ namespace AdventureGameEditor
                 Refrash();
             });
 
+            //DropDown事件
             bodyDropDown.RegisterValueChangedCallback((ChangeEvent<string> evt) =>
             {
                 List<string> faceList = new List<string>();
@@ -78,8 +80,6 @@ namespace AdventureGameEditor
                     faceDropDown.choices = faceList;
                     return;
                 }
-
-
             });
 
             //Refrash按钮
@@ -89,6 +89,21 @@ namespace AdventureGameEditor
                 Refrash();
             };
 
+            //滚轮事件
+            previewScroll = rootVisualElement.Q<ScrollView>("MainBody");
+            previewScroll.RegisterCallback<WheelEvent>(evt =>
+            {
+                if (evt.ctrlKey)
+                {
+                    Vector3 scale = fgImageContainer.transform.scale - new Vector3(evt.delta.y * 0.01f, evt.delta.y * 0.01f, 0);
+                    fgImageContainer.transform.scale = scale.x > 0.0 ? scale : fgImageContainer.transform.scale;
+                    previewScroll.scrollOffset = Vector2.zero;
+                }
+                else
+                {
+                    previewScroll.scrollOffset = new Vector2(0, previewScroll.scrollOffset.y > 0 ? previewScroll.scrollOffset.y : 0);
+                }
+            });
         }
 
         void Refrash()
@@ -101,11 +116,14 @@ namespace AdventureGameEditor
                 rootVisualElement.Q<Vector2Field>("CanvasSize").value = Vector2.zero;
                 fgImageContainer.style.width = 0;
                 fgImageContainer.style.height = 0;
+                fgImageContainer.transform.scale = Vector3.one;
             }
             else
             {
                 rootVisualElement.Bind(new SerializedObject(m_advFgImageDefine));
             };
+
+            previewScroll.scrollOffset = Vector3.zero;
         }
 
         #region Update
