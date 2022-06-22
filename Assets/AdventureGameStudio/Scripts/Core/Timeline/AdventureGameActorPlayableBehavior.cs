@@ -29,12 +29,18 @@ namespace AdventureGame
         public AdventureGameLayer binding { get; set; }
 
         public Sprite image;
+        public AdventureGameFgImageDefine fgImageDefine;
         public Texture ruleImage;
         public bool setNativeSize;
         public AdventureGameActorTransformPresets transformPresets;
         public ActorTrackAnimeSettings posAnime;
         public ActorTrackAnimeSettings rotationAnime;
         public ActorTrackAnimeSettings scaleAnime = new ActorTrackAnimeSettings(Vector2.one);
+        [HideInInspector] public string bodyName;
+        [HideInInspector] public string faceName;
+        [HideInInspector] public string append1;
+        [HideInInspector] public string append2;
+        [HideInInspector] public string append3;
 
         // Called when the owning graph starts playing
         public override void OnGraphStart(Playable playable)

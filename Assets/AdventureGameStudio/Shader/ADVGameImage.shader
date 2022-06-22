@@ -2,9 +2,9 @@ Shader "Hidden/ADVGame/Image"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "black" {}
+        [HideInInspector] _MainTex ("Texture", 2D) = "black" {}
         [Toggle] _USE_RULE_TEX("Use RuleTex",Float) = 0
-        _RuleTex("RuleTex", 2D) = "black" {}
+        [NoScaleOffset] _RuleTex("RuleTex", 2D) = "black" {}
         _SoftRange("SoftRange",Range(0.0,1.0)) = 0.05
         _Progress("Progress",Range(0.0,1.0)) = 1.0
     }

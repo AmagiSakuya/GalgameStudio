@@ -97,11 +97,6 @@ namespace AdventureGameEditor
                 {
                     Vector3 scale = fgImageContainer.transform.scale - new Vector3(evt.delta.y * 0.01f, evt.delta.y * 0.01f, 0);
                     fgImageContainer.transform.scale = scale.x > 0.0 ? scale : fgImageContainer.transform.scale;
-                    previewScroll.scrollOffset = Vector2.zero;
-                }
-                else
-                {
-                    previewScroll.scrollOffset = new Vector2(0, previewScroll.scrollOffset.y > 0 ? previewScroll.scrollOffset.y : 0);
                 }
             });
         }

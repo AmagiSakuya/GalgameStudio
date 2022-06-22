@@ -34,19 +34,12 @@ namespace AdventureGame
         {
             // ¥¥Ω®Actor
             if (ContainsKey(behavior)) return;
+            //SetProgressLock(behavior.ruleImage != null);
             SetProgressLock(behavior.ruleImage != null);
             m_pool[behavior] = Instantiate(actorPrefab, gameObject.transform);
-            // …Ë÷√image
+
             var actor = m_pool[behavior].GetComponent<AdventureGameActor>();
-            if (behavior.image)
-            {
-                actor.target.sprite = behavior.image;
-            }
-            if (behavior.setNativeSize)
-            {
-                actor.target.SetNativeSize();
-            }
-            actor.SetRule(behavior.ruleImage);
+            actor.OnBehaviorStart(behavior);
         }
 
         public void OnBehaviorEnd(AdventureGameActorPlayableBehavior behavior)
@@ -60,7 +53,7 @@ namespace AdventureGame
 
         public void OnProcessFrame(AdventureGameActorPlayableBehavior behavior, Playable playable, FrameData info)
         {
-            //Debug.Log(playable.GetTime());
+
         }
 
         void ClearBehaviorActor(AdventureGameActorPlayableBehavior behavior)

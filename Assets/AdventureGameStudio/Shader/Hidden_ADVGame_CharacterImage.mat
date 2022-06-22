@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden_ADVGame_CharacterImage
+  m_Shader: {fileID: 4800000, guid: d73bd04919c1fe74da1522d9d01cb31d, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AppendTex1:
+        m_Texture: {fileID: 2800000, guid: 29a14f16b3a14d74082dd77bf271457e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AppendTex2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AppendTex3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BodyTex:
+        m_Texture: {fileID: 2800000, guid: 18f811b765081a9459686723d1ff8d57, type: 3}
+        m_Scale: {x: 0.31493333, y: 0.641445}
+        m_Offset: {x: 0.34586665, y: 0.077733}
+    - _FaceTex:
+        m_Texture: {fileID: 2800000, guid: ac6a3f8ff67c5c84189a54f767c17d42, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RuleTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Progress: 1
+    - _SoftRange: 0.05
+    - _USE_RULE_TEX: 0
+    m_Colors: []
+  m_BuildTextureStacks: []

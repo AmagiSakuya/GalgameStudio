@@ -57,7 +57,8 @@ namespace AdventureGame
                 actor = clipBehaviour.binding.GetActorByBehavior(clipBehaviour);
                 if (actor != null)
                 {
-                    actor.SetFadeProgress(clipWeight);
+                    if((clipWeight != 0 || clipWeight != 1) && i != 0)
+                        actor.SetFadeProgress(clipWeight);
                     //¶¯»­
                     actor.SetTransform(clipBehaviour, (float)cilpPlayable.GetDuration(), (float)cilpPlayable.GetTime());
                 }

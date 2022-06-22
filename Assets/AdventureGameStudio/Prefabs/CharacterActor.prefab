@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 523389942409495239}
   - component: {fileID: 4658942325727771982}
   - component: {fileID: 521534784155238067}
-  - component: {fileID: -2342140478245980796}
+  - component: {fileID: 6544610831928485607}
   m_Layer: 5
   m_Name: CharacterActor
   m_TagString: Untagged
@@ -34,11 +34,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 876}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -876}
   m_SizeDelta: {x: 639, y: 1752}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4658942325727771982
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-2342140478245980796
+--- !u!114 &6544610831928485607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,6 +86,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3546163821867202294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2411030d4776ab24d8f6bf6682e213cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 500eb058f72942d429f12935a294498e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_fgimage: {fileID: 11400000, guid: 906d1f71e9751c14b80fc2500b7f9e6d, type: 2}
