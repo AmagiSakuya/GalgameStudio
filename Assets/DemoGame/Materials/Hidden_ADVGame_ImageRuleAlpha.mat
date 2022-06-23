@@ -30,7 +30,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Progress: 0.944
+    - _Instensity: 1
+    - _Intensity: 0.99
+    - _Offset: 0.387
+    - _Pow: 0.45454547
+    - _Progress: 1
+    - _SmoothMax: 1
+    - _SmoothMin: 0
     - _SoftRange: 0
     - _USE_RULE_TEX: 0
     m_Colors: []

@@ -9,6 +9,6 @@ namespace AdventureGame
     {
         public Vector2 position;
         public Vector2 rotation;
-        public Vector2 scale = Vector2.one;
+        public float scale = 1.0f;
     }
 }

@@ -69,6 +69,7 @@ Shader "Hidden/ADVGame/CharacterImage"
 			float4 frag(v2f i) : SV_Target
 			{
 				float4 texColor = tex2D(_BodyTex, float2(i.uv / _BodyTex_ST.xy - float2(_BodyTex_ST.z / _BodyTex_ST.x,_BodyTex_ST.w / _BodyTex_ST.y)));
+				float alpha_tex = texColor.a;
 				float4 faceColor = tex2D(_FaceTex, float2(i.uv / _FaceTex_ST.xy - float2(_FaceTex_ST.z / _FaceTex_ST.x, _FaceTex_ST.w / _FaceTex_ST.y)));
 
 				float4 appendtex1 = tex2D(_AppendTex1, float2(i.uv / _AppendTex1_ST.xy - float2(_AppendTex1_ST.z / _AppendTex1_ST.x, _AppendTex1_ST.w / _AppendTex1_ST.y)));
@@ -76,9 +77,9 @@ Shader "Hidden/ADVGame/CharacterImage"
 				float4 appendtex3 = tex2D(_AppendTex3, float2(i.uv / _AppendTex3_ST.xy - float2(_AppendTex3_ST.z / _AppendTex3_ST.x, _AppendTex3_ST.w / _AppendTex3_ST.y)));
 
 				texColor = lerp(texColor, faceColor, faceColor.a);
-				texColor = lerp(texColor, appendtex1, appendtex1.a);
+				/*texColor = lerp(texColor, appendtex1, appendtex1.a);
 				texColor = lerp(texColor, appendtex2, appendtex2.a);
-				texColor = lerp(texColor, appendtex3, appendtex3.a);
+				texColor = lerp(texColor, appendtex3, appendtex3.a);*/
 
 				float maskValue = tex2D(_RuleTex, i.uv).r;
 				float offset = lerp(-_SoftRange, _SoftRange, _Progress);
@@ -87,7 +88,7 @@ Shader "Hidden/ADVGame/CharacterImage"
 				float alpha1 = smoothstep(minValue, maxValue, maskValue);
 				float alpha2 = 1.0 - _Progress;
 				float alpha = _USE_RULE_TEX == 0 ? alpha2 : alpha1;
-				alpha = lerp(0, texColor.a, 1.0 - alpha);
+				alpha = lerp(0, alpha_tex, 1.0 - alpha);
 				return float4(texColor.rgb, alpha);
 			}
 			ENDCG

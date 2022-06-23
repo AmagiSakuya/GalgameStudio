@@ -105,7 +105,7 @@ namespace AdventureGame
         {
             rect.anchoredPosition = CalcVactorValueByTime(settings.posAnime, duration, time, settings.transformPresets != null ? settings.transformPresets.position : Vector2.zero);
             rect.localEulerAngles = CalcVactorValueByTime(settings.rotationAnime, duration, time, settings.transformPresets != null ? settings.transformPresets.rotation : Vector2.zero);
-            rect.localScale = CalcVactorValueByTime(settings.scaleAnime, duration, time, settings.transformPresets != null ? settings.transformPresets.scale : Vector2.zero);
+            rect.localScale = CalcVactorValueByTime(settings.scaleAnime, duration, time, settings.transformPresets != null ? new Vector2(settings.transformPresets.scale, settings.transformPresets.scale) : Vector2.zero);
         }
         protected Vector2 CalcVactorValueByTime(ActorTrackAnimeSettings settings, float duration, float time, Vector2 offset)
         {

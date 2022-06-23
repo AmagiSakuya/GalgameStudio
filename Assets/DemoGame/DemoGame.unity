@@ -834,7 +834,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1072538367}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: b397c49b4c4bf6f4587810242e31a58b, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 6551b3c5b8e1f5b48bff57ee1c195a31, type: 2}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -844,8 +844,10 @@ PlayableDirector:
     value: {fileID: 955763952}
   - key: {fileID: 6104996351841454698, guid: b397c49b4c4bf6f4587810242e31a58b, type: 2}
     value: {fileID: 1981995191}
-  - key: {fileID: -666091066475979096, guid: b397c49b4c4bf6f4587810242e31a58b, type: 2}
-    value: {fileID: 955763957}
+  - key: {fileID: 5972402021211023558, guid: 6551b3c5b8e1f5b48bff57ee1c195a31, type: 2}
+    value: {fileID: 955763952}
+  - key: {fileID: 6104996351841454698, guid: 6551b3c5b8e1f5b48bff57ee1c195a31, type: 2}
+    value: {fileID: 1981995191}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1141721187
@@ -1452,7 +1454,7 @@ GameObject:
   - component: {fileID: 1981995190}
   - component: {fileID: 1981995191}
   m_Layer: 5
-  m_Name: Layer1_Charactor
+  m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1708,7 +1710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: eec25d8aff368d947b4335e309d123a0, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.9764706}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

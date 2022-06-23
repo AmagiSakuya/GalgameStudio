@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f39c90602aede499c1b69425ccfe3b, type: 3}
   m_Name: "\u7FBD\u6708_\u4E2D\u8DDD\u79BB_\u5C45\u4E2D"
   m_EditorClassIdentifier: 
-  position: {x: 0, y: -200}
+  position: {x: 0, y: -400}
   rotation: {x: 0, y: 0}
-  scale: {x: -0.5, y: -0.5}
+  scale: -0.3

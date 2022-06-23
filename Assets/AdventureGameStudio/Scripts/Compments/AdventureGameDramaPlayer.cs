@@ -92,6 +92,7 @@ namespace AdventureGame
             cotent.text = m_compisition.content;
             characterName.text = m_compisition.characterName;
             m_cotentUIAnime.animeDefine.typeWriterAnimeSettings.duration = m_textTypeSpeed * cotent.text.Length;
+            m_cotentUIAnime.animeDefine.typeWriterAnimeSettings.delay = m_compisition.voiceDelay;
             m_cotentUIAnime.Play();
 
             //语音

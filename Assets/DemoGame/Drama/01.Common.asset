@@ -17,7 +17,7 @@ MonoBehaviour:
   - characterName: "\u7FBD\u6708"
     content: "\u5BEE\u306E\u7BA1\u7406\u3092\u884C\u3063\u3066\u3044\u308B\u306E\u306F\u30EF\u30BF\u30B7\u3060"
     voice: {fileID: 8300000, guid: b95a6a21d52ce9044858c25736438bf9, type: 3}
-    voiceDelay: 0.25
+    voiceDelay: 1
     bgm: {fileID: 8300000, guid: 7483754d6d031454288e460f1ef087be, type: 3}
     perform: {fileID: 11400000, guid: b397c49b4c4bf6f4587810242e31a58b, type: 2}
     OnEnter:
@@ -45,7 +45,7 @@ MonoBehaviour:
     voice: {fileID: 8300000, guid: 0fdfc11a6f9dd614b9972f1762d2c991, type: 3}
     voiceDelay: 0
     bgm: {fileID: 0}
-    perform: {fileID: 0}
+    perform: {fileID: 11400000, guid: 6551b3c5b8e1f5b48bff57ee1c195a31, type: 2}
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
@@ -309,11 +309,11 @@ MonoBehaviour:
       m_Calls: []
   m_selectedCompistion:
     characterName: "\u7FBD\u6708"
-    content: "\u5BEE\u306E\u7BA1\u7406\u3092\u884C\u3063\u3066\u3044\u308B\u306E\u306F\u30EF\u30BF\u30B7\u3060"
-    voice: {fileID: 8300000, guid: b95a6a21d52ce9044858c25736438bf9, type: 3}
-    voiceDelay: 0.25
-    bgm: {fileID: 8300000, guid: 7483754d6d031454288e460f1ef087be, type: 3}
-    perform: {fileID: 11400000, guid: b397c49b4c4bf6f4587810242e31a58b, type: 2}
+    content: "\u3044\u3084\u3001\u30EF\u30BF\u30B7\u3082\u30AD\u30DF\u305F\u3061\u3068\u540C\u3058\u5B66\u751F\u3060\u3002\u8A00\u8449\u4E0D\u8DB3\u3067\u6E08\u307E\u306A\u3044\u3002\u30EF\u30BF\u30B7\u306F\"\u4E8C\u6761\u9662\u7FBD\u6708\"\u3068\u3044\u3046"
+    voice: {fileID: 8300000, guid: 0fdfc11a6f9dd614b9972f1762d2c991, type: 3}
+    voiceDelay: 0
+    bgm: {fileID: 0}
+    perform: {fileID: 11400000, guid: 6551b3c5b8e1f5b48bff57ee1c195a31, type: 2}
     OnEnter:
       m_PersistentCalls:
         m_Calls: []
