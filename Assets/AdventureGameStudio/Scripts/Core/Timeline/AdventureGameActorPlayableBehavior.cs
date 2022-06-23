@@ -36,11 +36,11 @@ namespace AdventureGame
         public ActorTrackAnimeSettings posAnime;
         public ActorTrackAnimeSettings rotationAnime;
         public ActorTrackAnimeSettings scaleAnime = new ActorTrackAnimeSettings(Vector2.one);
-        [HideInInspector] public string bodyName;
-        [HideInInspector] public string faceName;
-        [HideInInspector] public string append1;
-        [HideInInspector] public string append2;
-        [HideInInspector] public string append3;
+        [ReadOnly] public string bodyName;
+        [ReadOnly] public string faceName;
+        [ReadOnly] public string append1;
+        [ReadOnly] public string append2;
+        [ReadOnly] public string append3;
 
         // Called when the owning graph starts playing
         public override void OnGraphStart(Playable playable)

@@ -22,6 +22,19 @@ namespace AdventureGameEditor
         private void OnEnable()
         {
             t = (AdventureGameActorPlayableAssets)target;
+            RefrashBodyList();
+            bodySelected = bodyList.IndexOf(t.settings.bodyName);
+            bodySelected = bodySelected < 0 ? 0 : bodySelected;
+            RefrashFaceList();
+            faceSelected = faceList.IndexOf(t.settings.faceName);
+            faceSelected = faceSelected < 0 ? 0 : faceSelected;
+            RefrashAppendList();
+            append1Selected = appendList.IndexOf(t.settings.append1);
+            append2Selected = appendList.IndexOf(t.settings.append2);
+            append3Selected = appendList.IndexOf(t.settings.append3);
+            append1Selected = append1Selected < 0 ? 0 : append1Selected;
+            append2Selected = append2Selected < 0 ? 0 : append2Selected;
+            append3Selected = append3Selected < 0 ? 0 : append3Selected;
         }
 
         public override void OnInspectorGUI()
@@ -34,6 +47,9 @@ namespace AdventureGameEditor
                 faceSelected = EditorGUILayout.Popup("Face", faceSelected, faceList.ToArray());
                 RefrashAppendList();
                 append1Selected = EditorGUILayout.Popup("Append1", append1Selected, appendList.ToArray());
+                append2Selected = EditorGUILayout.Popup("Append2", append2Selected, appendList.ToArray());
+                append3Selected = EditorGUILayout.Popup("Append3", append3Selected, appendList.ToArray());
+
             }
             else
             {
@@ -61,6 +77,7 @@ namespace AdventureGameEditor
         {
             bodyList = new List<string>();
             if (t.settings.fgImageDefine == null) return;
+            bodyList.Add("None");
             for (int i = 0; i < t.settings.fgImageDefine.bodyGroup.Length; i++)
             {
                 var bodyGroup = t.settings.fgImageDefine.bodyGroup[i];
@@ -75,7 +92,7 @@ namespace AdventureGameEditor
         {
             faceList = new List<string>();
             if (t.settings.fgImageDefine == null) return;
-
+            faceList.Add("None");
             for (int i = 0; i < t.settings.fgImageDefine.faceGroup.Length; i++)
             {
                 var faceGroup = t.settings.fgImageDefine.faceGroup[i];
@@ -90,6 +107,7 @@ namespace AdventureGameEditor
             }
         }
 
+      
         AdventureGameFgImageBodyGroup GetBodyGroupByBodyName(string bodyName)
         {
             for (int i = 0; i < t.settings.fgImageDefine.bodyGroup.Length; i++)
