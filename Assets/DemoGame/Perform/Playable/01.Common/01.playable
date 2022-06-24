@@ -45,6 +45,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+    lockFade: 0
     bodyName: 
     faceName: 
     append1: 
@@ -87,14 +88,15 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
     scaleAnime:
-      from: {x: 1, y: 1}
-      to: {x: 1, y: 1}
+      from: {x: 0, y: 0}
+      to: {x: 0, y: 0}
       curve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+    lockFade: 0
     bodyName: "\u79C1\u670Db"
     faceName: "\u7B11\u9854_b_1"
     append1: None
@@ -159,7 +161,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
     scaleAnime:
-      from: {x: 1, y: 1}
+      from: {x: 0, y: 0}
       to: {x: 1, y: 1}
       curve:
         serializedVersion: 2
@@ -167,6 +169,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+    lockFade: 0
     bodyName: None
     faceName: None
     append1: None
@@ -212,7 +215,7 @@ MonoBehaviour:
     fgImageDefine: {fileID: 0}
     ruleImage: {fileID: 2800000, guid: feac70cc619dc7f4d9390e5cab80284d, type: 3}
     setNativeSize: 0
-    transformPresets: {fileID: 0}
+    transformPresets: {fileID: 11400000, guid: 2c05672ab97de8241884f3b354fd2517, type: 2}
     posAnime:
       from: {x: 0, y: 0}
       to: {x: 0, y: 0}
@@ -232,14 +235,15 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
     scaleAnime:
-      from: {x: 1, y: 1}
-      to: {x: 1, y: 1}
+      from: {x: 0, y: 0}
+      to: {x: 0, y: 0}
       curve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+    lockFade: 0
     bodyName: 
     faceName: 
     append1: 
@@ -446,7 +450,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -473,16 +495,10 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -491,13 +507,19 @@ MonoBehaviour:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

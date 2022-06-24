@@ -19,6 +19,7 @@ namespace AdventureGameEditor
         int append3Selected = 0;
 
         AdventureGameActorPlayableAssets t;
+        AdventureGameActorTransformPresets old_transformPresets;
         private void OnEnable()
         {
             t = (AdventureGameActorPlayableAssets)target;
@@ -35,6 +36,7 @@ namespace AdventureGameEditor
             append1Selected = append1Selected < 0 ? 0 : append1Selected;
             append2Selected = append2Selected < 0 ? 0 : append2Selected;
             append3Selected = append3Selected < 0 ? 0 : append3Selected;
+            old_transformPresets = t.settings.transformPresets;
         }
 
         public override void OnInspectorGUI()
@@ -71,6 +73,11 @@ namespace AdventureGameEditor
 
             base.OnInspectorGUI();
 
+            if(old_transformPresets != t.settings.transformPresets)
+            {
+                t.settings.scaleAnime.from = t.settings.transformPresets != null ? Vector2.zero : Vector2.one;
+                old_transformPresets = t.settings.transformPresets;
+            }
         }
 
         void RefrashBodyList()

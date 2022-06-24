@@ -36,6 +36,7 @@ namespace AdventureGame
         public ActorTrackAnimeSettings posAnime;
         public ActorTrackAnimeSettings rotationAnime;
         public ActorTrackAnimeSettings scaleAnime = new ActorTrackAnimeSettings(Vector2.one);
+        public bool lockFade = false;
         [ReadOnly] public string bodyName;
         [ReadOnly] public string faceName;
         [ReadOnly] public string append1;
